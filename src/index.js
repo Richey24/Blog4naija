@@ -23,7 +23,7 @@ root.render(
           <Route path='/register' element={<Register />} />
           <Route path='/adminregister' element={<AdminRegister />} />
           <Route path='/registeremploy' element={<RegisterEmploy />} />
-          <Route path='/update:id' element={<Update />} />
+          <Route path='/update' element={<Update />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

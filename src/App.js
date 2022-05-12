@@ -4,7 +4,7 @@ import Main from './Main';
 import { Table, Button, Container } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
@@ -13,28 +13,44 @@ function App() {
 
 
   let [{ token, role }] = useCookies()
+  let [employee, setEmploy] = useState([])
+  let navigate = useNavigate()
 
   useEffect(() => {
     async function fetchData() {
-      let res = await axios.get('https://test-jwt-employee.herokuapp.com/api/employee/welcome', {
-        mode: 'cors',
+      let res = await axios.get('https://test-jwt-employee.herokuapp.com/api/employee/get/all', {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: 'Bearer ' + token
         },
       })
-      let response = await res.json()
+      let response = await res.data
+      setEmploy(response)
     }
     fetchData()
-  }, [token])
+  }, [token, employee])
 
-  let navigate = useNavigate()
 
-  const updateUser = () => {
-    navigate(`/update:id`)
+
+  const updateUser = async (id, fName, lName, address, email, age) => {
+    navigate(`/update`, {
+      state: {
+        id,
+        fName,
+        lName,
+        address,
+        email,
+        age
+      }
+    })
   }
 
-  const deleteUser = () => {
-
+  async function deleteUser(id) {
+    console.log(id);
+    await axios.delete(`https://test-jwt-employee.herokuapp.com/api/employee/delete/${id}`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
   }
 
   return (
@@ -64,20 +80,33 @@ function App() {
                   <th>#</th>
                   <th>First Name</th>
                   <th>Last Name</th>
-                  <th>Role</th>
-                  <th>Update</th>
-                  <th>Delete</th>
+                  <th>Address</th>
+                  <th>Email</th>
+                  <th>Age</th>
+
+                  {role === 'ADMIN' ? (<><th>Update</th>
+                    <th>Delete</th></>) : null}
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td><Button disabled={role === 'ADMIN' ? false : true} onClick={updateUser}>Update</Button></td>
-                  <td><Button disabled={role === 'ADMIN' ? false : true} variant='danger' onClick={deleteUser}>Delete</Button></td>
-                </tr>
+
+                {
+                  employee.map((single, i) => {
+                    return (
+                      <tr key={single.id}>
+                        <td>{i + 1}</td>
+                        <td>{single.firstName}</td>
+                        <td>{single.lastName}</td>
+                        <td>{single.address}</td>
+                        <td>{single.email}</td>
+                        <td>{single.age}</td>
+                        {role === 'ADMIN' ? (<><td><Button onClick={() => updateUser(single.id, single.firstName, single.lastName, single.address, single.email, single.age)}>Update</Button></td>
+                          <td><Button variant='danger' onClick={() => deleteUser(single.id)}>Delete</Button></td></>) : null}
+                      </tr>
+                    )
+                  })
+                }
+
               </tbody>
             </Table>
           </>

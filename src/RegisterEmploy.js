@@ -57,17 +57,17 @@ function RegisterEmploy() {
 
                     <Form.Group className="mb-3" controlId="formBasicNumber">
                         <Form.Label>Address</Form.Label>
-                        <Form.Control type="text" placeholder="Enter phone number" />
+                        <Form.Control type="text" placeholder="Enter your address" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicRole">
                         <Form.Label>Age</Form.Label>
-                        <Form.Control type="number" placeholder="Enter your role" />
+                        <Form.Control type="number" placeholder="Enter your age" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicRole">
                         <Form.Label>Date Of Birth</Form.Label>
-                        <Form.Control type="date" placeholder="Enter your role" />
+                        <Form.Control type="date" placeholder="Enter your dob" />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Register
