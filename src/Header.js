@@ -1,7 +1,14 @@
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 function Header() {
+    const [{ token }, setCookie, removeCookie] = useCookies(['cookie-name']);
+
+    const logOut = () => {
+        removeCookie("token")
+        removeCookie("role")
+    }
     return (
         <div>
             <Navbar bg="primary" expand="lg">
@@ -21,6 +28,8 @@ function Header() {
                             <Link style={{ textDecoration: "none" }} to="/adminregister">
                                 <Nav.Link href="#link" className='text-light'>Register as admin</Nav.Link>
                             </Link>
+                            {token ? (<Nav.Link href="#link" className='text-light' onClick={logOut}>Logout</Nav.Link>
+                            ) : null}
                             <NavDropdown title="More" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">About Us</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Contact Us</NavDropdown.Item>
