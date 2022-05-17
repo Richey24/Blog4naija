@@ -12,20 +12,30 @@ function RegisterEmploy() {
 
     const registerUser = async (event) => {
         event.preventDefault()
+        let image = new FormData()
+        image.append("file", event.target[2].files[0])
+        let img = await axios.post('https://test-jwt-employee.herokuapp.com/api/employee/file/save', image, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        console.log(img);
+
         let res = await axios.post('https://test-jwt-employee.herokuapp.com/api/employee/save', {
             firstName: event.target[0].value,
             lastName: event.target[1].value,
-            email: event.target[2].value,
-            address: event.target[3].value,
-            age: event.target[4].value,
-            dateOfBirth: event.target[5].value
+            imageName: event.target[2].files[0].name,
+            email: event.target[3].value,
+            address: event.target[4].value,
+            age: event.target[5].value,
+            dateOfBirth: event.target[6].value
         }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
         })
         let response = await res.data
-        console.log(response);
         if (response) {
             navigate('/')
         }
@@ -46,6 +56,8 @@ function RegisterEmploy() {
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter your last name" />
                     </Form.Group>
+
+                    <input type="file" name="image" />
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
