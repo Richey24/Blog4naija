@@ -1,0 +1,192 @@
+.trend {
+    position: absolute;
+    width: 349px;
+    height: 63px;
+    left: 125px;
+    top: 139px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 63px;
+
+    color: #D05270;
+}
+
+.trend1 {
+    width: auto;
+    height: auto;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+
+    color: #D05270;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dude {
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    top: 115px;
+    right: 115px;
+    z-index: 2;
+}
+
+.dudeSect {
+    position: absolute;
+    top: 210px;
+    right: 133px;
+    z-index: 1;
+    width: 16rem;
+    height: 10rem;
+    border-radius: 10%;
+    background-color: #D05270;
+}
+
+.topic {
+    position: absolute;
+    width: 482px;
+    height: 63px;
+    left: 125px;
+    top: 199px;
+
+    font-family: 'Droid Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 63px;
+
+    color: #424242;
+}
+
+.topic1 {
+    width: auto;
+    height: auto;
+
+    font-family: 'Droid Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+
+    color: #424242;
+}
+
+.trendText {
+    position: absolute;
+    width: 631px;
+    height: 110px;
+    left: 130px;
+    top: 279px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #424242;
+}
+
+.trendText1 {
+    width: auto;
+    height: auto;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #424242;
+}
+
+.more {
+    position: absolute;
+    width: 94px;
+    height: 22px;
+    left: 130px;
+    top: 379px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #D05270;
+}
+
+.more1 {
+    width: 94px;
+    height: 22px;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #D05270;
+}
+
+.social {
+    position: absolute;
+    width: 639px;
+    height: 60px;
+    left: 130px;
+    top: 419px;
+}
+
+.social1 {
+    width: auto;
+    height: 60px;
+}
+
+.socialButton1 {
+    margin-right: 2rem;
+    padding: 0.5rem 2rem 0.8rem 2rem;
+    color: white;
+    background-color: rgb(81, 174, 205);
+    border: none;
+}
+
+.socialButton2 {
+    margin-right: 2rem;
+    padding: 0.4rem 2rem 0.4rem 2rem;
+    color: white;
+    background-color: #1275B1;
+    border: none;
+}
+
+.socialButton3 {
+    padding: 0.4rem 2rem 0.6rem 2rem;
+    color: white;
+    background-color: black;
+}
+
+.socialButton11 {
+    margin-right: 1rem;
+    padding: 0.3rem 1rem 0.4rem 1rem;
+    color: white;
+    background-color: rgb(81, 174, 205);
+    border: none;
+}
+
+.socialButton22 {
+    margin-right: 1rem;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    color: white;
+    background-color: #1275B1;
+    border: none;
+}
+
+.socialButton33 {
+    padding: 0.2rem 1rem 0.3rem 1rem;
+    color: white;
+    background-color: black;
+}
