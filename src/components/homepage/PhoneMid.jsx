@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import medium from '../img/medium.svg'
-import linkedin from '../img/linkedin.svg'
-import twitter from '../img/twitter.svg'
-import '../App.css'
+import medium from '../../img/medium.svg'
+import linkedin from '../../img/linkedin.svg'
+import twitter from '../../img/twitter.svg'
+import '../../App.css'
 import { Container } from 'react-bootstrap'
 
 const PhoneMid = () => {

@@ -1,10 +1,10 @@
-import dude from '../img/Saly-16.svg'
-import '../App.css'
+import dude from '../../img/Saly-16.svg'
+import '../../App.css'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import medium from '../img/medium.svg'
-import linkedin from '../img/linkedin.svg'
-import twitter from '../img/twitter.svg'
+import medium from '../../img/medium.svg'
+import linkedin from '../../img/linkedin.svg'
+import twitter from '../../img/twitter.svg'
 
 const LaptopMid = () => {
     return (
