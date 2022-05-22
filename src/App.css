@@ -21,8 +21,8 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    font-size: 42px;
-
+    font-size: 20px;
+    line-height: 24px;
     color: #D05270;
 }
 
@@ -74,8 +74,8 @@
     font-family: 'Droid Sans';
     font-style: normal;
     font-weight: 500;
-    font-size: 32px;
-
+    font-size: 20px;
+    line-height: 24px;
     color: #424242;
 }
 
@@ -96,14 +96,14 @@
 }
 
 .trendText1 {
-    width: auto;
-    height: auto;
+    width: 327px;
+    height: 84px;
 
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-
+    font-size: 12px;
+    line-height: 120%;
     color: #424242;
 }
 
@@ -129,8 +129,8 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 17px;
     color: #D05270;
 }
 
@@ -170,7 +170,13 @@
 }
 
 .socialButton11 {
-    margin-right: 1rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 10px;
+
+    margin-right: 0.5rem;
     padding: 0.3rem 1rem 0.4rem 1rem;
     color: white;
     background-color: rgb(81, 174, 205);
@@ -178,7 +184,13 @@
 }
 
 .socialButton22 {
-    margin-right: 1rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 10px;
+
+    margin-right: 0.5rem;
     padding: 0.2rem 1rem 0.2rem 1rem;
     color: white;
     background-color: #1275B1;
@@ -186,6 +198,12 @@
 }
 
 .socialButton33 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 10px;
+
     padding: 0.2rem 1rem 0.3rem 1rem;
     color: white;
     background-color: black;

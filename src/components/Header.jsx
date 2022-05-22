@@ -6,7 +6,7 @@ const Header = () => {
     const [active, setActive] = useState('blog')
     return (
         <div>
-            <Navbar style={{ backgroundColor: 'lightcyan' }} expand="lg">
+            <Navbar style={{ backgroundColor: 'white' }} expand="lg">
                 <Container>
                     <Navbar.Brand className='fw-bold' href="#home">Blog4Naija</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

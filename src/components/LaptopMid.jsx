@@ -18,9 +18,9 @@ const LaptopMid = () => {
                         <p className='more'>Read More</p>
                     </Link>
                     <div className='social'>
-                        <button className='socialButton1'><img style={{paddingRight: '0.6rem'}} src={twitter} alt='twitter'/> TWITTER</button>
-                        <button className='socialButton2'><img style={{paddingRight: '0.6rem'}} src={linkedin} alt='linkedin'/> LINKEDIN</button>
-                        <button className='socialButton3'><img style={{paddingRight: '0.6rem'}} src={medium} alt='medium'/> MEDIUM</button>
+                        <button className='socialButton1'><img style={{ paddingRight: '0.6rem' }} src={twitter} alt='twitter' /> TWITTER</button>
+                        <button className='socialButton2'><img style={{ paddingRight: '0.6rem' }} src={linkedin} alt='linkedin' /> LINKEDIN</button>
+                        <button className='socialButton3'><img style={{ paddingRight: '0.6rem' }} src={medium} alt='medium' /> MEDIUM</button>
                     </div>
                 </Container>
                 <div className='dudeMain'>
