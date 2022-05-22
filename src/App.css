@@ -1,7 +1,7 @@
 .trend {
     position: absolute;
-    width: 349px;
-    height: 63px;
+    width: auto;
+    height: auto;
     left: 125px;
     top: 139px;
 
@@ -53,8 +53,8 @@
 
 .topic {
     position: absolute;
-    width: 482px;
-    height: 63px;
+    width: auto;
+    height: auto;
     left: 125px;
     top: 199px;
 
@@ -109,8 +109,8 @@
 
 .more {
     position: absolute;
-    width: 94px;
-    height: 22px;
+    width: auto;
+    height: auto;
     left: 130px;
     top: 379px;
 
@@ -123,8 +123,8 @@
 }
 
 .more1 {
-    width: 94px;
-    height: 22px;
+    width: auto;
+    height: auto;
     text-decoration: none;
     font-family: 'Montserrat';
     font-style: normal;
@@ -136,8 +136,8 @@
 
 .social {
     position: absolute;
-    width: 639px;
-    height: 60px;
+    width: auto;
+    height: auto;
     left: 130px;
     top: 419px;
 }
@@ -211,8 +211,8 @@
 
 .blogPost {
     position: absolute;
-    width: 135px;
-    height: 24px;
+    width: auto;
+    height: auto;
     left: 12px;
     top: 403px;
 
@@ -227,8 +227,8 @@
 
 .blogPost1 {
     position: absolute;
-    width: 275px;
-    height: 24px;
+    width: auto;
+    height: auto;
     left: 124px;
     top: 583px;
 
@@ -243,8 +243,8 @@
 
 .filter {
     position: absolute;
-    width: 275px;
-    height: 24px;
+    width: auto;
+    height: auto;
     left: 90px;
     top: 683px;
     display: flex;
@@ -278,7 +278,7 @@
     position: absolute;
     left: 120px;
     top: 783px;
-    width: fit-content;
+    width: auto;
     height: fit-content;
     display: flex;
     flex-wrap: wrap;

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../../App.css'
 import blog from '../../img/blog.jpg'
+import { Pagination } from 'react-bootstrap'
 
 const Main = ({ name, filter, post }) => {
     const [active, setActive] = useState('all')
@@ -59,6 +60,23 @@ const Main = ({ name, filter, post }) => {
                         <p style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '18px', fontWeight: '500', color: '#D05270', width: '116px' } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '500', color: '#D05270', width: '90px' }}>Read More</p>
                     </Link>
                 </div>
+                {/* Pagination For The Blog */}
+                <Pagination className={post === 'post' ? 'page' : 'page1'}>
+                    <Pagination.First />
+                    <Pagination.Prev />
+                    <Pagination.Item active>{1}</Pagination.Item>
+
+                    <Pagination.Item>{2}</Pagination.Item>
+                    <Pagination.Item>{3}</Pagination.Item>
+                    <Pagination.Item>{4}</Pagination.Item>
+                    <Pagination.Item>{5}</Pagination.Item>
+                    <Pagination.Item>{6}</Pagination.Item>
+
+                    <Pagination.Ellipsis />
+                    <Pagination.Item>{20}</Pagination.Item>
+                    <Pagination.Next />
+                    <Pagination.Last />
+                </Pagination>
             </div>
         </div>
     )
