@@ -12,7 +12,7 @@ const Footer = ({ size }) => {
 
             <footer className="foot">
                 <div className={size === "large" ? "mainFoot" : "mainFoot1"}>
-                    <div>
+                    <div style={{ marginLeft: '-1rem' }}>
                         <p className="footHead">Quick Link</p>
                         <Link style={{ textDecoration: "none" }} to={`blog`}>
                             <p className="footLink">Blog Posts</p>
@@ -27,7 +27,7 @@ const Footer = ({ size }) => {
                             <p className="footLink">Privacy Policy</p>
                         </Link>
                     </div>
-                    <div >
+                    <div>
                         <p className="footHead">Key Features</p>
                         <Link style={{ textDecoration: "none" }} to={`love`}>
                             <p className="footLink">Love Calculator</p>
