@@ -277,3 +277,183 @@
     border-bottom: 0.1rem #D05270 solid;
     width: fit-content;
 }
+
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    padding: 0px 0px 0px 12.0306px;
+    gap: 31.58px;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12.7633px 14.8905px;
+    gap: 10.64px;
+
+    border: 1.06361px solid #424242;
+    border-radius: 4.25444px;
+    box-sizing: border-box;
+    width: 52.12px;
+    height: 52.12px;
+
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 21.4683px;
+    line-height: 123.6%;
+    cursor: pointer;
+}
+
+.pages1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12.7633px 14.8905px;
+    gap: 10.64px;
+
+    border: 1.06361px solid #D05270;
+    border-radius: 4.25444px;
+    box-sizing: border-box;
+    width: 52.12px;
+    height: 52.12px;
+
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21.4683px;
+    line-height: 123.6%;
+    cursor: pointer;
+}
+
+.footHead {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #D05270;
+}
+
+.footLink {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+    text-align: justify;
+
+    color: #424242;
+}
+
+.footLink:hover {
+    color: #D05270;
+}
+
+.mainFoot {
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+}
+
+.mainFoot1 {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.foot {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12.7633px 14.8905px;
+    gap: 10.64px;
+    margin-right: 0.5rem;
+
+    border: 1.06361px solid #D05270;
+    border-radius: 4.25444px;
+    box-sizing: border-box;
+    width: 52.12px;
+    height: 52.12px;
+    cursor: pointer;
+}
+
+.brand:hover {
+    background-color: #D05270;
+}
+
+.brand1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6.7633px 7.8905px;
+    margin-right: 0.5rem;
+
+    border: 1.06361px solid #D05270;
+    border-radius: 4.25444px;
+    box-sizing: border-box;
+    width: 40.43px;
+    height: 34.97px;
+    cursor: pointer;
+}
+
+.brand1:hover {
+    background-color: #D05270;
+}
+
+.brandDiv {
+    display: flex;
+    flex-wrap: wrap;
+    width: 230px;
+    height: 147px;
+}
+
+.brandDiv1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+}
+
+.follow {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #D05270;
+}
+
+.flexDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.copy {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #424242;
+    text-align: center;
+    margin-top: 2rem;
+}
