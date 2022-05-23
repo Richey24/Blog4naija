@@ -8,7 +8,7 @@ const Header = ({ hide }) => {
         <div>
             <Navbar style={{ backgroundColor: 'white' }} expand="lg">
                 <Navbar.Brand className='fw-bold' href="#home">Blog4Naija</Navbar.Brand>
-                <Navbar.Toggle onClick={hide} aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle style={{ border: 'none' }} onClick={hide} aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className='justify-content-end' id="basic-navbar-nav">
                     <Link style={{ textDecoration: 'none' }} to={`/blog`}>
                         <Nav.Link onClick={() => setActive('blog')} style={{ fontWeight: 'bold' }} className={active === 'blog' ? `text-dark` : 'text-secondary'} href="#home">Blog</Nav.Link>
