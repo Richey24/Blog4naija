@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({ hide }) => {
     const [active, setActive] = useState('blog')
     return (
         <div>
             <Navbar style={{ backgroundColor: 'white' }} expand="lg">
                 <Navbar.Brand className='fw-bold' href="#home">Blog4Naija</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle onClick={hide} aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className='justify-content-end' id="basic-navbar-nav">
                     <Link style={{ textDecoration: 'none' }} to={`/blog`}>
                         <Nav.Link onClick={() => setActive('blog')} style={{ fontWeight: 'bold' }} className={active === 'blog' ? `text-dark` : 'text-secondary'} href="#home">Blog</Nav.Link>

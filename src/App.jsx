@@ -21,6 +21,17 @@ const App = () => {
 
     window.addEventListener('resize', () => { setSize(window.innerWidth) })
 
+    const hide = () => {
+        let main = document.getElementById("main")
+        if (main.style.opacity === "0") {
+            main.style.height = "auto"
+            main.style.opacity = "1"
+        } else {
+            main.style.transition = 'opacity 1s ease-out'
+            main.style.opacity = "0"
+            main.style.height = "0"
+        }
+    }
 
     return (
         <div style={{ marginLeft: '2rem', marginRight: '2rem' }}>
@@ -29,19 +40,21 @@ const App = () => {
                     <Spinner animation="grow" variant="info" />
                 ) : (
                     <>
-                        <Header />
-                        {
-                            large ? (
-                                <LaptopMid />
-                            ) : (
-                                <PhoneMid />
-                            )
-                        }
-                        {
-                            large ? (<Main name='blogPost1' filter='filter' post='post' />) : (
-                                <Main name='blogPost' filter='filter1' post='post1' />
-                            )
-                        }
+                        <Header hide={hide} />
+                        <div id="main">
+                            {
+                                large ? (
+                                    <LaptopMid />
+                                ) : (
+                                    <PhoneMid />
+                                )
+                            }
+                            {
+                                large ? (<Main name='blogPost1' filter='filter' post='post' />) : (
+                                    <Main name='blogPost' filter='filter1' post='post1' />
+                                )
+                            }
+                        </div>
                     </>
                 )
             }
