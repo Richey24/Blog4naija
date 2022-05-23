@@ -36,7 +36,7 @@ const App = () => {
     }
 
     return (
-        <div style={{ marginLeft: '2rem', marginRight: '2rem' }}>
+        <div style={{ marginLeft: '4rem', marginRight: '4rem' }}>
             {
                 spin ? (
                     <Spinner animation="grow" variant="info" />

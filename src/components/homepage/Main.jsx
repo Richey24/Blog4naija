@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import '../../App.css'
 import blog from '../../img/blog.jpg'
@@ -6,6 +7,7 @@ import blog from '../../img/blog.jpg'
 const Main = ({ name, filter, post }) => {
     const [active, setActive] = useState('all')
     const [page, setPage] = useState(1)
+    const [spin, setSpin] = useState(false)
     return (
         <div>
             <h4 className={name}>BLOG POSTS</h4>
@@ -73,6 +75,18 @@ const Main = ({ name, filter, post }) => {
                         <p className={post === 'post' ? 'more' : 'more1'}>Read More</p>
                     </Link>
                 </div>
+                {
+                    post === "post1" && (
+                        <button onClick={() => setSpin(!spin)} className='load'>
+                            {
+                                spin ? (
+
+                                    <Spinner animation="border" variant="light" />
+                                ) : "Load More"
+                            }
+                        </button>
+                    )
+                }
             </div>
             {/* Pagination For The Blog */}
             {

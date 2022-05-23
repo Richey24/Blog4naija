@@ -28,14 +28,14 @@
     height: 20rem;
     position: absolute;
     top: 115px;
-    right: 50px;
+    right: 80px;
     z-index: 2;
 }
 
 .dudeSect {
     position: absolute;
     top: 210px;
-    right: 50px;
+    right: 80px;
     z-index: 1;
     width: 16rem;
     height: 10rem;
@@ -159,7 +159,7 @@
     line-height: 10px;
 
     margin-right: 0.5rem;
-    padding: 0.3rem 1rem 0.4rem 1rem;
+    padding: 0.3rem 1rem 0.3rem 1rem;
     color: white;
     background-color: rgb(81, 174, 205);
     border: none;
@@ -173,7 +173,7 @@
     line-height: 10px;
 
     margin-right: 0.5rem;
-    padding: 0.2rem 1rem 0.2rem 1rem;
+    padding: 0.1rem 1rem 0.1rem 1rem;
     color: white;
     background-color: #1275B1;
     border: none;
@@ -186,9 +186,10 @@
     font-size: 8px;
     line-height: 10px;
 
-    padding: 0.2rem 1rem 0.3rem 1rem;
+    padding: 0.25rem 1rem 0.25rem 1rem;
     color: white;
     background-color: black;
+    border: none;
 }
 
 .blogPost {
@@ -456,4 +457,18 @@
     color: #424242;
     text-align: center;
     margin-top: 2rem;
+}
+
+.load {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 24px;
+    background-color: #D05270;
+    color: white;
+    border: none;
+    border-radius: 5%;
+    width: 100px;
+    height: 35px;
 }
