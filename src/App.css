@@ -82,8 +82,8 @@
 }
 
 .trendText1 {
-    width: 327px;
-    height: 84px;
+    width: auto;
+    height: auto;
 
     font-family: 'Montserrat';
     font-style: normal;
