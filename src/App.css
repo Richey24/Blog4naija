@@ -473,6 +473,12 @@
     height: 35px;
 }
 
+.mainLoad {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .detail {
     font-family: 'Montserrat';
     font-style: normal;

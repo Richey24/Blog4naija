@@ -1,0 +1,1 @@
+export const url = 'https://crush-and-i.herokuapp.com'
