@@ -520,3 +520,9 @@
     line-height: 120%;
     color: #424242;
 }
+
+.wrap {
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+}
