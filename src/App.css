@@ -104,6 +104,7 @@
     line-height: 22px;
     color: #D05270;
     border-bottom: 0.1rem #D05270 solid;
+    cursor: pointer;
 }
 
 .more1 {
@@ -117,6 +118,7 @@
     line-height: 17px;
     color: #D05270;
     border-bottom: 0.1rem #D05270 solid;
+    cursor: pointer;
 }
 
 .social {

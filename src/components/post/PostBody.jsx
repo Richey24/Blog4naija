@@ -6,7 +6,7 @@ import medium from '../../img/medium.svg'
 import linkedin from '../../img/linkedin.svg'
 import twitter from '../../img/twitter.svg'
 
-const PostBody = ({ large }) => {
+const PostBody = ({ large, post }) => {
     let navigate = useNavigate()
     return (
         <div>
@@ -15,8 +15,8 @@ const PostBody = ({ large }) => {
                 <h6 style={{ fontWeight: 'bold', marginTop: '6px' }}>Back</h6>
             </div>
             <div>
-                <p style={{ marginTop: '30px' }} className={large ? 'trend' : 'trend1'}>Blog Post Title</p>
-                <p className={large ? 'trendText' : 'trendText1'}>Authors Name <img src={calender} alt='calender' style={{ marginLeft: '6px', marginBottom: '4px', marginRight: '10px', width: '14px', height: '14px' }} /> 23 May 2022</p>
+                <p style={{ marginTop: '30px' }} className={large ? 'trend' : 'trend1'}>{post.title}</p>
+                <p className={large ? 'trendText' : 'trendText1'}>{post.appUser ? post.appUser.firstName : null} {post.appUser ? post.appUser.lastName : null}<img src={calender} alt='calender' style={{ marginLeft: '6px', marginBottom: '4px', marginRight: '10px', width: '14px', height: '14px' }} />{post.createdDate}</p>
             </div>
             <img src={blogImage} alt="blog" style={{ width: '100%' }} loading="lazy" placeholder='blog image' />
             <div style={{ display: 'flex', marginTop: '20px' }}>
@@ -42,7 +42,7 @@ const PostBody = ({ large }) => {
 
             <div>
                 <h5 className={large ? 'detail' : 'detail1'}>Blog Details</h5>
-                <p className={large ? 'content' : 'content1'}>Just like graphic design and web development, UX design trends come and go for a reason. UX is all about developing a better digital world for humanity. It’s a field that requires innovation, but that is constantly evolving. Regularly following UX design blogs can help you keep on top of changes in the industry, as well as develop your UX skills. Additionally, many UX design blogs expose you to case studies detailing an app or web’s successful development, along with how its usability was improved. Reading about these types of cases can help give you ideas. In this sense, UX design blogs can help provide an indication for the kinds of directions your future projects should take. Additionally, many UX design blogs expose you to case studies detailing an app or web’s successful development, along with how its usability was improved. Reading about these types of cases can help give you ideas. In this sense, UX design blogs can help provide an indication for the kinds of directions your future projects should take.</p>
+                <p className={large ? 'content' : 'content1'}>{post.content}</p>
             </div>
         </div>
     )
