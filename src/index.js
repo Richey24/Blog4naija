@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { CookiesProvider } from 'react-cookie'
 import Post from './Post';
+import Edit from './components/editor/Edit';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
         <Routes>
           <Route path='/' element={<App />} />
           <Route path='/more' element={<Post />} />
+          <Route path='/edit' element={<Edit />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
