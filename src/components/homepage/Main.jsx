@@ -65,7 +65,7 @@ const Main = ({ name, filter, post }) => {
             <br />
             <ul id='view' className={filter}>
                 <li onClick={() => filterPost('all')} style={active === 'all' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>All</li>
-                <li onClick={() => filterPost('technology')} style={active === 'technology' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Technology</li>
+                <li onClick={() => filterPost('tech')} style={active === 'tech' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Technology</li>
                 <li onClick={() => filterPost('health')} style={active === 'health' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Health</li>
                 <li onClick={() => filterPost('travel')} style={active === 'travel' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Travel</li>
                 <li onClick={() => filterPost('beauty')} style={active === 'beauty' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Beauty</li>
@@ -93,7 +93,7 @@ const Main = ({ name, filter, post }) => {
 
                             <h3 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '24px', fontWeight: '600', color: '#D05270' } : { fontFamily: 'Montserrat', fontSize: '24px', fontWeight: '600', color: '#D05270' }}>{mainPost.title}</h3>
 
-                            <p className='wrap' style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '400', color: '#424242', width: '590px' } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '400', color: '#424242', width: '327px', height: '40px' }}>{mainPost.content}.</p>
+                            <p style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '400', color: '#424242', width: '590px' } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '400', color: '#424242', width: '327px' }}>{mainPost.content}.</p>
 
                             <p onClick={() => getPostById(mainPost.id)} className={post === 'post' ? 'more' : 'more1'}>Read More</p>
                         </div>
