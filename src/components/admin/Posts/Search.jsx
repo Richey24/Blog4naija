@@ -25,13 +25,13 @@ const Search = () => {
         buttonP: {
             fontFamily: 'Montserrat',
             fontStyle: 'normal',
-            fontWeight: '700',
-            fontSize: '16px',
+            fontWeight: '400',
+            fontSize: '10px',
             lineHeight: '20px',
             color: '#FFFFFF',
         },
         buttonSpan: {
-            paddingRight: '1rem',
+            paddingRight: '0.2rem',
             fontFamily: 'Montserrat',
             fontStyle: 'normal',
             fontWeight: '700',
