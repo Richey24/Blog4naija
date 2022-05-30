@@ -1,0 +1,39 @@
+.myToggle {
+    display: none;
+}
+
+label img {
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.myNav {
+    width: 100vw;
+    background-color: #D05270;
+    height: 100vh;
+}
+
+.myBrand {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #424242;
+}
+
+.btn-close {
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.canvasTitle {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    padding-left: 4rem;
+}

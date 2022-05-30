@@ -1,0 +1,50 @@
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-left: -2rem;
+}
+
+.stat h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2C2C2C;
+    margin-left: 2rem;
+}
+
+.stat p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10.7747px;
+    line-height: 13px;
+    color: #D05270;
+    margin-right: 4rem;
+    border: 0.769622px solid #DDDDDD;
+    width: 125px;
+    height: 30.78px;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat p:hover {
+    background-color: #DDDDDD;
+}
+
+path {
+    stroke: #D05270;
+}
+
+circle {
+    fill: #792a3c;
+}
+
+line {
+    stroke-dasharray: 4px;
+    stroke-dashoffset: 2px;
+}

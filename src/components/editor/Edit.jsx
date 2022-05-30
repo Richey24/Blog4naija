@@ -4,14 +4,8 @@ import '../../App.css'
 const Edit = () => {
     const [text, setText] = useState("")
     const [selectedImage, setSelectedImage] = useState()
-    const [preview, setPreview] = useState([])
     const [mainImage, setMainImage] = useState([])
     const firstInput = useRef(null)
-    const [text1, setText1] = useState()
-
-    const getText = (event) => {
-
-    }
 
     const getImage = (event) => {
         setSelectedImage(event.target.files[0])
@@ -59,7 +53,6 @@ const Edit = () => {
                 </span>
                 <label className="myLabel" htmlFor="upload"><input onInput={getImage} id='upload' style={{ display: 'none' }} type='file' />+</label>
             </div>
-            <img src={preview[0]} alt="" />
             <button onClick={() => makeBold('bold')}>make bold</button>
             <button onClick={() => makeBold('italic')}>make italic</button>
             <button onClick={() => makeBold('underline')}>underline</button>

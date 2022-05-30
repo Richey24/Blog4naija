@@ -520,3 +520,9 @@
     line-height: 120%;
     color: #424242;
 }
+
+.textArea {
+    border: none transparent;
+    outline: none;
+    width: 100%;
+}

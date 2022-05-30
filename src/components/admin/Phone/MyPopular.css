@@ -1,0 +1,47 @@
+.myPopular {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+}
+
+.myPostHook {
+    margin-top: 16px;
+    width: 100px;
+    margin-left: -13rem;
+}
+
+.myPostHook h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13.8532px;
+    line-height: 17px;
+    color: #2C2C2C;
+}
+
+.myPostHook p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10.7747px;
+    line-height: 13px;
+    color: #9F9F9F;
+}
+
+.myPostViews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.myPostViews span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10.7747px;
+    line-height: 13px;
+    color: #4B4B4B;
+    margin-left: 5px;
+}

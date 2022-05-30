@@ -1,0 +1,70 @@
+.popular {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+}
+
+.postViews {
+    display: flex;
+    width: 57.72px;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5rem;
+}
+
+.postViews span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10.7747px;
+    line-height: 13px;
+    color: #4B4B4B;
+}
+
+.categories {
+    display: flex;
+    width: 200px;
+    height: 19px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-right: 20rem;
+}
+
+.postHook {
+    margin-top: 16px;
+    width: 106px;
+    margin-right: 10rem;
+}
+
+.postHook h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13.8532px;
+    line-height: 17px;
+    color: #2C2C2C;
+}
+
+.postHook p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10.7747px;
+    line-height: 13px;
+    color: #9F9F9F;
+}
+
+.categories h6 {
+    background: #A1A1A1;
+    width: 93px;
+    height: 22.16px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.7747px;
+    padding-top: 2px;
+    padding-left: 4px;
+    color: #FFFFFF;
+}

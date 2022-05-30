@@ -5,9 +5,64 @@ import blogImage from '../../img/blog.jpg'
 import medium from '../../img/medium.svg'
 import linkedin from '../../img/linkedin.svg'
 import twitter from '../../img/twitter.svg'
+import related from '../../img/Rectangle 317.svg'
+import user from '../../img/user-pink.svg'
+import './PostBody.css'
 
 const PostBody = ({ large, post }) => {
     let navigate = useNavigate()
+    const style = {
+        relatedTitle: {
+            fontFamily: 'Montserrat',
+            fontStyle: 'normal',
+            fontWeight: '600',
+            fontSize: large ? '24px' : '14px',
+            lineHeight: large ? '29px' : '17px',
+            color: '#424242',
+            cursor: large ? '' : 'pointer',
+            marginTop: '1rem'
+        },
+        relatedMain: {
+            marginTop: '2rem',
+            display: 'flex',
+            justifyContent: 'space-between'
+        },
+        commentName: {
+            fontFamily: 'Montserrat',
+            fontStyle: 'normal',
+            fontWeight: '400',
+            fontSize: large ? '32px' : '14px',
+            lineHeight: large ? '39px' : '17px',
+            color: '#D05270',
+        },
+        commentSpan: {
+            fontFamily: 'Montserrat',
+            fontStyle: 'normal',
+            fontWeight: '400',
+            fontSize: large ? '16px' : '10px',
+            lineHeight: large ? '20px' : '12px',
+            color: '#D05270',
+            marginLeft: '3px'
+        },
+        span: {
+            fontFamily: 'Montserrat',
+            fontStyle: 'normal',
+            fontWeight: '500',
+            fontSize: large ? '16px' : '10px',
+            lineHeight: large ? '20px' : '12px',
+            color: '#6D7D8B',
+            marginBottom: '0.7rem'
+        },
+        commentText: {
+            fontFamily: 'Montserrat',
+            fontStyle: 'normal',
+            fontWeight: '500',
+            fontSize: large ? '24px' : '14px',
+            lineHeight: large ? '29px' : '17px',
+            color: '#00000',
+            marginBottom: '-0.1rem'
+        }
+    }
     return (
         <div>
             <div onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: '70px', marginTop: '12px', cursor: 'pointer' }}>
@@ -44,6 +99,146 @@ const PostBody = ({ large, post }) => {
                 <h5 className={large ? 'detail' : 'detail1'}>Blog Details</h5>
                 <p className={large ? 'content' : 'content1'}>{post.content}</p>
             </div>
+            {
+                large ? (
+                    <div style={{ marginTop: '2rem', borderBottom: '0.5px solid #6D7D8B' }}>
+                        <h5 style={{ marginBottom: '2rem' }} className={large ? 'detail' : 'detail1'}>Related Posts</h5>
+                        <div style={style.relatedMain}>
+                            <div style={{ cursor: 'pointer' }}>
+                                <img src={related} alt="related" />
+                                <p style={style.relatedTitle}>Getting started as a designer</p>
+                            </div>
+                            <div style={{ cursor: 'pointer' }}>
+                                <img src={related} alt="related" />
+                                <p style={style.relatedTitle}>Getting started as a designer</p>
+                            </div>
+                            <div style={{ cursor: 'pointer' }}>
+                                <img src={related} alt="related" />
+                                <p style={style.relatedTitle}>Getting started as a designer</p>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <h5 style={{ marginBottom: '1rem' }} className={large ? 'detail' : 'detail1'}>Related Posts</h5>
+                        <ul>
+                            <li style={style.relatedTitle}>Getting started as a designer</li>
+                            <li style={style.relatedTitle}>Getting started as a designer</li>
+                            <li style={style.relatedTitle}>Getting started as a designer</li>
+                        </ul>
+                    </div>
+                )
+            }
+            {
+                large ? (
+                    <div style={{ marginTop: '2rem' }}>
+                        <h5 style={{ marginBottom: '2rem' }} className={large ? 'detail' : 'detail1'}>Comments (3)</h5>
+                        <div style={{ borderBottom: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: '345px' }}>
+                                <p style={style.commentName}>Gold Machete</p>
+                                <span style={style.span}>about 30min ago</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '0.8rem' }}>
+                                <img src={user} alt="user" />
+                                <div style={{ marginLeft: '1rem' }}>
+                                    <p style={style.commentText}>This is my comment under this post</p>
+                                    <span style={style.commentSpan}>reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ borderBottom: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: '345px' }}>
+                                <p style={style.commentName}>Gold Machete</p>
+                                <span style={style.span}>about 30min ago</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '0.8rem' }}>
+                                <img src={user} alt="user" />
+                                <div style={{ marginLeft: '1rem' }}>
+                                    <p style={style.commentText}>This is my comment under this post</p>
+                                    <span style={style.commentSpan}>reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ borderBottom: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: '345px' }}>
+                                <p style={style.commentName}>Gold Machete</p>
+                                <span style={style.span}>about 30min ago</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '0.8rem' }}>
+                                <img src={user} alt="user" />
+                                <div style={{ marginLeft: '1rem' }}>
+                                    <p style={style.commentText}>This is my comment under this post</p>
+                                    <span style={style.commentSpan}>reply</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <h5 style={{ marginBottom: '1rem' }} className={large ? 'detail' : 'detail1'}>Comments (3)</h5>
+                        <div style={{ borderTop: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: large ? '345px' : '180px' }}>
+                                <p style={style.commentName}>Gold Machete</p>
+                                <span style={style.span}>about 30min ago</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '0.8rem' }}>
+                                <img src={user} alt="user" />
+                                <div style={{ marginLeft: '1rem' }}>
+                                    <p style={style.commentText}>This is my comment under this post</p>
+                                    <span style={style.commentSpan}>reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ borderTop: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: large ? '345px' : '180px' }}>
+                                <p style={style.commentName}>Gold Machete</p>
+                                <span style={style.span}>about 30min ago</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '0.8rem' }}>
+                                <img src={user} alt="user" />
+                                <div style={{ marginLeft: '1rem' }}>
+                                    <p style={style.commentText}>This is my comment under this post</p>
+                                    <span style={style.commentSpan}>reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ borderTop: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: large ? '345px' : '180px' }}>
+                                <p style={style.commentName}>Gold Machete</p>
+                                <span style={style.span}>about 30min ago</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '0.8rem' }}>
+                                <img src={user} alt="user" />
+                                <div style={{ marginLeft: '1rem' }}>
+                                    <p style={style.commentText}>This is my comment under this post</p>
+                                    <span style={style.commentSpan}>reply</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            {
+                large ? (
+                    <div style={{ width: '1093px' }}>
+                        <p className='conversationLarge'>Join The Conversation</p>
+                        <input className='commentInputLarge' placeholder='Full Name' />
+                        <textarea placeholder='Type Your Comment Here' className='commentTextLarge'></textarea>
+                        <div style={{ display: 'flex', justifyContent: 'right' }}>
+                            <button className='commentButton'>Submit Comment</button>
+                        </div>
+                    </div>
+                ) : (
+                    <div style={{ width: '327px' }}>
+                        <p className='conversation'>Join The Conversation</p>
+                        <input className='commentInput' placeholder='Full Name' />
+                        <textarea placeholder='Type Your Comment Here' className='commentText'></textarea>
+                        <div style={{ display: 'flex', justifyContent: 'right' }}>
+                            <button className='commentButton'>Submit Comment</button>
+                        </div>
+                    </div>
+                )
+            }
         </div>
     )
 }

@@ -5,19 +5,24 @@ import { Spinner } from 'react-bootstrap'
 import PhoneMid from "./components/homepage/PhoneMid"
 import Main from "./components/homepage/Main"
 import Footer from "./components/Footer"
+import axios from 'axios'
+import { url } from "./Env"
 
 const App = () => {
     const [large, setLarge] = useState(false)
     const [size, setSize] = useState(window.innerWidth)
     const [spin, setSpin] = useState(true)
     useEffect(() => {
-        setSpin(true)
-        if (size >= 800) {
-            setLarge(true)
-        } else {
-            setLarge(false)
-        }
-        setSpin(false)
+        (async () => {
+            setSpin(true)
+            await axios.get(`${url}/api/stat/count`)
+            if (size >= 800) {
+                setLarge(true)
+            } else {
+                setLarge(false)
+            }
+            setSpin(false)
+        })()
     }, [size])
 
     window.addEventListener('resize', () => { setSize(window.innerWidth) })

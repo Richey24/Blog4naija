@@ -91,7 +91,7 @@ const Main = ({ name, filter, post }) => {
 
                             <h6 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', marginTop: '0.3rem', color: '#424242' } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', marginTop: '0.3rem', color: '#424242' }}>{mainPost.createdDate}</h6>
 
-                            <h3 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '24px', fontWeight: '600', color: '#D05270' } : { fontFamily: 'Montserrat', fontSize: '24px', fontWeight: '600', color: '#D05270' }}>{mainPost.title}</h3>
+                            <h3 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '24px', width: '36rem', fontWeight: '600', color: '#D05270' } : { fontFamily: 'Montserrat', fontSize: '18px', fontWeight: '600', color: '#D05270' }}>{mainPost.title}</h3>
 
                             <p style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '400', color: '#424242', width: '590px' } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '400', color: '#424242', width: '327px' }}>{mainPost.content}.</p>
 

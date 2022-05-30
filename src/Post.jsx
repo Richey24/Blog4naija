@@ -64,7 +64,6 @@ const Post = () => {
                     <div>
 
                         <Header hide={postHide} />
-
                         <div id='main'>
                             {
                                 post.title ? (

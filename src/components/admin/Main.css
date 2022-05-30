@@ -1,0 +1,9 @@
+.dashMain {
+    display: flex;
+    justify-content: space-between;
+}
+
+.colSide {
+    display: flex;
+    flex-direction: column;
+}
