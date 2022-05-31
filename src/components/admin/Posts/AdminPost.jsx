@@ -28,7 +28,7 @@ const AdminPost = () => {
   }, [size])
 
   const filterPost = (text) => {
-    let newPosts = search.filter((filtered) => filtered.title.toLowerCase().includes(text))
+    let newPosts = search.filter((filtered) => filtered.title.toLowerCase().includes(text.toLowerCase()))
     setPost(newPosts)
   }
 
