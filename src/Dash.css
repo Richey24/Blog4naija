@@ -11,13 +11,14 @@
     font-size: 20px;
     line-height: 24px;
     text-align: center;
+    padding-right: 4rem;
     padding-top: 2rem;
     color: #FFFFFF;
 }
 
 .myList {
-    text-align: center;
     padding-top: 0.6rem;
+    margin-left: -2rem;
 }
 
 .notActive {

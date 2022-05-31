@@ -9,7 +9,7 @@ import related from '../../img/Rectangle 317.svg'
 import user from '../../img/user-pink.svg'
 import './PostBody.css'
 
-const PostBody = ({ large, post }) => {
+const PostBody = ({ large, post, relatedPost, getPost }) => {
     let navigate = useNavigate()
     const style = {
         relatedTitle: {
@@ -69,21 +69,21 @@ const PostBody = ({ large, post }) => {
                 <img style={{ height: '16px' }} src={vector} alt="vector" />
                 <h6 style={{ fontWeight: 'bold', marginTop: '6px' }}>Back</h6>
             </div>
-            <div>
+            <div style={large ? { marginBottom: '-5rem' } : null}>
                 <p style={{ marginTop: '30px' }} className={large ? 'trend' : 'trend1'}>{post.title}</p>
                 <p className={large ? 'trendText' : 'trendText1'}>{post.appUser ? post.appUser.firstName : null} {post.appUser ? post.appUser.lastName : null}<img src={calender} alt='calender' style={{ marginLeft: '6px', marginBottom: '4px', marginRight: '10px', width: '14px', height: '14px' }} />{post.createdDate}</p>
             </div>
-            <img src={blogImage} alt="blog" style={{ width: '100%' }} loading="lazy" placeholder='blog image' />
-            <div style={{ display: 'flex', marginTop: '20px' }}>
+            <img src={blogImage} alt="blog" style={{ width: '100%', height: large ? '500px' : 'auto' }} loading="lazy" placeholder='blog image' />
+            <div style={{ display: 'flex', marginTop: '20px', width: '100%', justifyContent: 'space-between' }}>
                 {
                     large && (<p className='trendText'>Kindly Share This Post</p>)
                 }
                 {
                     large ? (
-                        <div className='social'>
-                            <button className='socialButton1'><img style={{ paddingRight: '0.6rem' }} src={twitter} alt='twitter' /> TWITTER</button>
-                            <button className='socialButton2'><img style={{ paddingRight: '0.6rem' }} src={linkedin} alt='linkedin' /> LINKEDIN</button>
-                            <button className='socialButton3'><img style={{ paddingRight: '0.6rem' }} src={medium} alt='medium' /> MEDIUM</button>
+                        <div style={{ display: 'flex' }}>
+                            <button className='socialButton111'><img style={{ paddingRight: '0.6rem' }} src={twitter} alt='twitter' /> TWITTER</button>
+                            <button className='socialButton222'><img style={{ paddingRight: '0.6rem' }} src={linkedin} alt='linkedin' /> LINKEDIN</button>
+                            <button className='socialButton333'><img style={{ paddingRight: '0.6rem' }} src={medium} alt='medium' /> MEDIUM</button>
                         </div>
                     ) : (
                         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -104,27 +104,25 @@ const PostBody = ({ large, post }) => {
                     <div style={{ marginTop: '2rem', borderBottom: '0.5px solid #6D7D8B' }}>
                         <h5 style={{ marginBottom: '2rem' }} className={large ? 'detail' : 'detail1'}>Related Posts</h5>
                         <div style={style.relatedMain}>
-                            <div style={{ cursor: 'pointer' }}>
-                                <img src={related} alt="related" />
-                                <p style={style.relatedTitle}>Getting started as a designer</p>
-                            </div>
-                            <div style={{ cursor: 'pointer' }}>
-                                <img src={related} alt="related" />
-                                <p style={style.relatedTitle}>Getting started as a designer</p>
-                            </div>
-                            <div style={{ cursor: 'pointer' }}>
-                                <img src={related} alt="related" />
-                                <p style={style.relatedTitle}>Getting started as a designer</p>
-                            </div>
+                            {
+                                relatedPost.map((single, i) => (
+                                    <div onClick={() => getPost(single.id)} key={i} style={{ cursor: 'pointer' }}>
+                                        <img src={related} alt="related" />
+                                        <p style={style.relatedTitle}>{single.title}</p>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 ) : (
                     <div>
                         <h5 style={{ marginBottom: '1rem' }} className={large ? 'detail' : 'detail1'}>Related Posts</h5>
                         <ul>
-                            <li style={style.relatedTitle}>Getting started as a designer</li>
-                            <li style={style.relatedTitle}>Getting started as a designer</li>
-                            <li style={style.relatedTitle}>Getting started as a designer</li>
+                            {
+                                relatedPost.map((single, i) => (
+                                    <li onClick={() => getPost(single.id)} key={i} style={style.relatedTitle}>{single.title}</li>
+                                ))
+                            }
                         </ul>
                     </div>
                 )
@@ -220,7 +218,7 @@ const PostBody = ({ large, post }) => {
             }
             {
                 large ? (
-                    <div style={{ width: '1093px' }}>
+                    <div style={{ width: '100%' }}>
                         <p className='conversationLarge'>Join The Conversation</p>
                         <input className='commentInputLarge' placeholder='Full Name' />
                         <textarea placeholder='Type Your Comment Here' className='commentTextLarge'></textarea>

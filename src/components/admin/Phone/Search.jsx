@@ -12,8 +12,8 @@ const Search = () => {
                     <input placeholder='Search everything' id='myInput' type="text" className='myInput' />
                 </label>
                 <var className='noti'>
-                    <img style={{ width: '15px' }} src={noti} alt="notification" />
-                    <sup><img src={round} alt='round' style={{ width: '5px' }} /></sup>
+                    <img style={{ width: '14px' }} src={noti} alt="notification" />
+                    <sup><img src={round} alt='round' style={{ width: '2px' }} /></sup>
                 </var>
             </div>
         </div>

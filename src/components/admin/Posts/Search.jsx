@@ -13,7 +13,7 @@ const Search = () => {
         button: {
             display: 'flex',
             flexDirection: 'row',
-            alignItems: 'baseline',
+            alignItems: 'center',
             border: 'none',
             height: '31px',
             padding: '6px 20px',
@@ -28,6 +28,7 @@ const Search = () => {
             fontWeight: '400',
             fontSize: '10px',
             lineHeight: '20px',
+            marginTop: '17px',
             color: '#FFFFFF',
         },
         buttonSpan: {

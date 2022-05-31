@@ -17,7 +17,7 @@ const Main = ({ name, filter, post }) => {
     const navigate = useNavigate()
     const loadMore = async () => {
         setSpin(true)
-        let response = await axios.get(`${url}/api/blog/get/page?offSet=${offSet}&category=${active}&pageSize=10`)
+        let response = await axios.get(`${url}/api/blog/get/page?offSet=${offSet}&category=${active}&pageSize=9`)
         let result = await response.data
         setPosts([...posts, ...result.content])
         setSpin(false)
@@ -25,7 +25,7 @@ const Main = ({ name, filter, post }) => {
 
     const loadMoreDesktop = async (off) => {
         setSpin(true)
-        let response = await axios.get(`${url}/api/blog/get/page?offSet=${off}&category=${active}&pageSize=10`)
+        let response = await axios.get(`${url}/api/blog/get/page?offSet=${off}&category=${active}&pageSize=9`)
         let result = await response.data
         setPosts(result.content)
         setSpin(false)
@@ -37,7 +37,7 @@ const Main = ({ name, filter, post }) => {
     const filterPost = async (str) => {
         setFSpin(true)
         setActive(str)
-        let response = await axios.get(`${url}/api/blog/get/page?offSet=0&category=${str}&pageSize=10`)
+        let response = await axios.get(`${url}/api/blog/get/page?offSet=0&category=${str}&pageSize=9`)
         let result = await response.data
         setPosts(result.content)
         result.content.length < 1 && setEmpty(true)
@@ -65,7 +65,7 @@ const Main = ({ name, filter, post }) => {
             <br />
             <ul id='view' className={filter}>
                 <li onClick={() => filterPost('all')} style={active === 'all' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>All</li>
-                <li onClick={() => filterPost('tech')} style={active === 'tech' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Technology</li>
+                <li onClick={() => filterPost('technology')} style={active === 'tech' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Technology</li>
                 <li onClick={() => filterPost('health')} style={active === 'health' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Health</li>
                 <li onClick={() => filterPost('travel')} style={active === 'travel' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Travel</li>
                 <li onClick={() => filterPost('beauty')} style={active === 'beauty' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Beauty</li>
@@ -86,14 +86,14 @@ const Main = ({ name, filter, post }) => {
                             }
                         </>
                     ) : posts.map((mainPost) => (
-                        <div key={mainPost.id}>
+                        <div style={post === 'post' ? { width: '30%' } : null} key={mainPost.id}>
                             <img loading='lazy' placeholder='blog photo' className={post === 'post1' ? 'img' : 'img1'} src={blog} alt='blog' />
 
-                            <h6 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', marginTop: '0.3rem', color: '#424242' } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', marginTop: '0.3rem', color: '#424242' }}>{mainPost.createdDate}</h6>
+                            <h6 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', width: 'auto', marginTop: '0.3rem', color: '#424242', } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', marginTop: '0.3rem', color: '#424242' }}>{mainPost.createdDate}</h6>
 
-                            <h3 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '24px', width: '36rem', fontWeight: '600', color: '#D05270' } : { fontFamily: 'Montserrat', fontSize: '18px', fontWeight: '600', color: '#D05270' }}>{mainPost.title}</h3>
+                            <h3 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '24px', width: "auto", fontWeight: '600', color: '#D05270', } : { fontFamily: 'Montserrat', fontSize: '18px', fontWeight: '600', color: '#D05270' }}>{mainPost.title}</h3>
 
-                            <p style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '400', color: '#424242', width: '590px' } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '400', color: '#424242', width: '327px' }}>{mainPost.content}.</p>
+                            <p className='wrappedWord' style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '400', color: '#424242', width: 'auto', } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '400', color: '#424242', width: '327px' }}>{mainPost.content}.</p>
 
                             <p onClick={() => getPostById(mainPost.id)} className={post === 'post' ? 'more' : 'more1'}>Read More</p>
                         </div>

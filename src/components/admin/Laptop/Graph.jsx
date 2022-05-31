@@ -4,7 +4,7 @@ import { MyChart } from './MyChart'
 const Graph = () => {
     return (
         <div style={{ marginTop: '2rem' }}>
-            <div className='stat'>
+            <div className='myStat'>
                 <h5>View Statistic</h5>
                 <p><img src={date} alt="date" />Yesterday</p>
             </div>

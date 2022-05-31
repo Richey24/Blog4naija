@@ -1,75 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Table.css'
 import view from '../../../img/view.svg'
+import axios from 'axios'
+import { url } from '../../../Env'
+import { Spinner } from 'react-bootstrap'
 const Table = ({ hide }) => {
+    const [post, setPost] = useState([])
+    useEffect(() => {
+        (async () => {
+            let response = await axios.get(`${url}/api/blog/get/page?offSet=0&category=all&pageSize=50`)
+            let result = await response.data
+            setPost(result.content)
+            console.log(post);
+        })()
+    }, [post])
     return (
         <div style={{ marginTop: '2rem' }}>
             <table>
                 <thead>
-                    <th>S/N</th>
+                    <th style={{ textAlign: 'center' }}>S/N</th>
                     <th>Title</th>
                     <th style={hide && { display: 'none' }}>Category</th>
-                    <th>Comment</th>
-                    <th>View</th>
-                    <th className='action'>Action</th>
+                    <th style={{ textAlign: 'center' }}>Comment</th>
+                    <th style={{ textAlign: 'center' }}>View</th>
+                    <th style={{ textAlign: 'center' }} className='action'>Action</th>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td style={{ paddingTop: '1rem' }} className='postHook'>
-                            <h5>React Post</h5>
-                            <p>30 May 2022</p>
-                        </td>
-                        <td style={hide && { display: 'none' }}><h6>JavaScript</h6></td>
-                        <td>12</td>
-                        <td className='theView'><img src={view} alt='view' /> <span>234,454</span></td>
-                        <td style={{ fontSize: '38px', cursor: 'pointer' }}>...</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td style={{ paddingTop: '1rem' }} className='postHook'>
-                            <h5>React Post</h5>
-                            <p>30 May 2022</p>
-                        </td>
-                        <td style={hide && { display: 'none' }}><h6>JavaScript</h6></td>
-                        <td>12</td>
-                        <td className='theView'><img src={view} alt='view' /> <span>234,454</span></td>
-                        <td style={{ fontSize: '38px', cursor: 'pointer' }}>...</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td style={{ paddingTop: '1rem' }} className='postHook'>
-                            <h5>React Post</h5>
-                            <p>30 May 2022</p>
-                        </td>
-                        <td style={hide && { display: 'none' }}><h6>JavaScript</h6></td>
-                        <td>12</td>
-                        <td className='theView'><img src={view} alt='view' /> <span>234,454</span></td>
-                        <td style={{ fontSize: '38px', cursor: 'pointer' }}>...</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td style={{ paddingTop: '1rem' }} className='postHook'>
-                            <h5>React Post</h5>
-                            <p>30 May 2022</p>
-                        </td>
-                        <td style={hide && { display: 'none' }}><h6>JavaScript</h6></td>
-                        <td>12</td>
-                        <td className='theView'><img src={view} alt='view' /> <span>234,454</span></td>
-                        <td style={{ fontSize: '38px', cursor: 'pointer' }}>...</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td style={{ paddingTop: '1rem' }} className='postHook'>
-                            <h5>React Post</h5>
-                            <p>30 May 2022</p>
-                        </td>
-                        <td style={hide && { display: 'none' }}><h6>JavaScript</h6></td>
-                        <td>12</td>
-                        <td className='theView'><img src={view} alt='view' /> <span>234,454</span></td>
-                        <td style={{ fontSize: '38px', cursor: 'pointer' }}>...</td>
-                    </tr>
-                </tbody>
+                {
+                    post.length < 1 ? (
+                        <Spinner animation='border' style={{ color: "#D05270" }} />
+                    ) : (
+                        <tbody>
+                            {
+                                post.map((single, i) => (
+                                    <tr key={i}>
+                                        <td style={{ textAlign: 'center' }}>{i + 1}</td>
+                                        <td style={{ paddingTop: '1rem' }} className='postHook'>
+                                            <h5>{single.title}</h5>
+                                            <p>{single.createdDate}</p>
+                                        </td>
+                                        <td style={hide && { display: 'none' }}><h6>{single.category}</h6></td>
+                                        <td style={{ textAlign: 'center' }}>{single.comments?.length}</td>
+                                        <td style={{ textAlign: 'center' }} className='theView'><img src={view} alt='view' /> <span>{single.view}</span></td>
+                                        <td style={{ fontSize: '38px', cursor: 'pointer', textAlign: 'center', paddingBottom: '1.3rem' }}>...</td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    )
+                }
             </table>
         </div>
     )

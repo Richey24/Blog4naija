@@ -66,7 +66,7 @@
 }
 
 .commentInputLarge {
-    width: 1093px;
+    width: 100%;
     height: 38px;
     background: #FFFFFF;
     outline: none;
@@ -84,7 +84,7 @@
 }
 
 .commentTextLarge {
-    width: 1093px;
+    width: 100%;
     outline: none;
     height: 223px;
     background: #FFFFFF;
@@ -109,4 +109,32 @@
     font-size: 32px;
     line-height: 39px;
     color: #6D7D8B;
+}
+
+.socialButton111 {
+    margin-right: 2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    background-color: rgb(81, 174, 205);
+    border: none;
+}
+
+.socialButton222 {
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    color: white;
+    background-color: #1275B1;
+    border: none;
+}
+
+.socialButton333 {
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    background-color: black;
 }

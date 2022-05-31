@@ -1,59 +1,50 @@
+import React, { useEffect, useState } from 'react'
 import './Graph.css'
 import filter from '../../../img/filter.svg'
 import user from '../../../img/user-pink.svg'
 import view from '../../../img/view.svg'
 import './Popular.css'
+import axios from 'axios'
+import { url } from '../../../Env'
+import { Spinner } from 'react-bootstrap'
 const Popular = () => {
+    const [post, setPost] = useState([])
+    useEffect(() => {
+        (async () => {
+            let response = await axios.get(`${url}/api/blog/get/page?offSet=0&category=all&pageSize=3`)
+            let result = await response.data
+            setPost(result.content)
+            console.log(post);
+        })()
+    }, [post])
     return (
         <div style={{ marginTop: '2rem', marginBottom: '3rem' }}>
-            <div className='stat'>
+            <div className='myStat'>
                 <h5>Popular Posts</h5>
                 <p><img src={filter} alt="date" />View</p>
             </div>
-            <div className='popular'>
-                <img src={user} alt="user" />
-                <div className='postHook'>
-                    <h5>React Hooks</h5>
-                    <p>28 May 2022</p>
-                </div>
-                <div className='categories'>
-                    <h6>Frontend</h6>
-                    <h6>Development</h6>
-                </div>
-                <div className='postViews'>
-                    <img src={view} alt="view" />
-                    <span>213,321</span>
-                </div>
-            </div>
-            <div className='popular'>
-                <img src={user} alt="user" />
-                <div className='postHook'>
-                    <h5>Ui Design Color</h5>
-                    <p>28 May 2022</p>
-                </div>
-                <div className='categories'>
-                    <h6>Ui Design</h6>
-                </div>
-                <div className='postViews'>
-                    <img src={view} alt="view" />
-                    <span>196,425</span>
-                </div>
-            </div>
-            <div className='popular'>
-                <img src={user} alt="user" />
-                <div className='postHook'>
-                    <h5>React Hooks</h5>
-                    <p>28 May 2022</p>
-                </div>
-                <div className='categories'>
-                    <h6>React</h6>
-                    <h6>JavaScript</h6>
-                </div>
-                <div className='postViews'>
-                    <img src={view} alt="view" />
-                    <span>178,567</span>
-                </div>
-            </div>
+            {
+                post.length < 1 ? (
+                    <Spinner animation='border' style={{ color: "#D05270" }} />
+                ) : (
+                    post.map((single) => (
+                        <div className='popular'>
+                            <img src={user} alt="user" />
+                            <div className='postHook'>
+                                <h5>{single.title}</h5>
+                                <p>{single.createdDate}</p>
+                            </div>
+                            <div className='categories'>
+                                <h6>{single.category}</h6>
+                            </div>
+                            <div className='postViews'>
+                                <img src={view} alt="view" />
+                                <span>{single.view}</span>
+                            </div>
+                        </div>
+                    ))
+                )
+            }
         </div>
     )
 }

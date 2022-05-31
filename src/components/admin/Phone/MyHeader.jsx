@@ -15,7 +15,7 @@ const MyHeader = () => {
             <div style={{ display: 'flex', width: '407px', marginLeft: '-2rem' }}>
                 <ul>
                     <li onClick={() => navigate('/post')}><img src={clarity} alt='clarity' />Write a new post</li>
-                    <li onClick={() => navigate('/')}><img src={view} alt='view' />View website</li>
+                    <li onClick={() => navigate('/')}><img style={{ marginRight: '13px' }} src={view} alt='view' />View website</li>
                 </ul>
                 <ul>
                     <li onClick={() => navigate('/page')}><img src={add} alt="add" />Add new page</li>

@@ -12,19 +12,25 @@ const Post = () => {
     const [size, setSize] = useState(window.innerWidth)
     const [spin, setSpin] = useState(true)
     const [post, setPost] = useState({})
+    const [related, setRelated] = useState([])
     let location = useLocation()
     let navigate = useNavigate()
 
-    const getPost = async () => {
+    const getPost = async (id = location.state.postId) => {
         if (location.state === null) {
             navigate('/')
         } else {
             if (location.state.postId === undefined) {
                 navigate('/')
             } else {
-                let response = await axios.get(`${url}/api/blog/get/${location.state.postId}`)
+                let response = await axios.get(`${url}/api/blog/get/${id}`)
                 let result = await response.data
                 setPost(result)
+                let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=3`)
+                let filterResult = await filterResponse.data
+                setRelated(filterResult.content)
+                let main = document.getElementById("main")
+                main.scrollIntoView()
             }
         }
     }
@@ -56,7 +62,7 @@ const Post = () => {
         }
     }
     return (
-        <div style={large ? { marginLeft: '4rem', marginRight: '4rem' } : { marginLeft: '1rem', marginRight: '1rem' }}>
+        <div style={large ? { marginLeft: '6rem', marginRight: '6rem' } : { marginLeft: '1rem', marginRight: '1rem' }}>
             {
                 spin ? (
                     <Spinner animation="grow" variant="info" />
@@ -67,7 +73,7 @@ const Post = () => {
                         <div id='main'>
                             {
                                 post.title ? (
-                                    <PostBody post={post} large={large} />
+                                    <PostBody getPost={getPost} relatedPost={related} post={post} large={large} />
                                 ) : (
                                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                         <Spinner animation="border" style={{ color: "#D05270" }} />

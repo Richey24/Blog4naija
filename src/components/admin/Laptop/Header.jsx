@@ -14,9 +14,9 @@ const Header = () => {
             </div>
             <ul>
                 <li onClick={() => navigate('/post')}><img src={clarity} alt='clarity' />Write a new post</li>
-                <li onClick={() => navigate('/')}><img src={view} alt='view' />View website</li>
-                <li onClick={() => navigate('/page')}><img src={add} alt="add" />Add new page</li>
-                <li onClick={() => navigate('/category')}><img src={add} alt="add" />Add new category</li>
+                <li onClick={() => navigate('/')}><img style={{ marginRight: '13px' }} src={view} alt='view' />View website</li>
+                <li onClick={() => navigate('/page')}><img style={{ marginRight: '13px' }} src={add} alt="add" />Add new page</li>
+                <li onClick={() => navigate('/category')}><img style={{ marginRight: '13px' }} src={add} alt="add" />Add new category</li>
             </ul>
             <div className='myViews'>
                 <h5>2,223,215</h5>

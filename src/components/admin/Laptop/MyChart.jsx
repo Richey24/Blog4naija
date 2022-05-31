@@ -31,15 +31,22 @@ export function MyChart({ height }) {
                 let result = await response.data
                 if (postAmount.length < 3) {
                     let newData = []
-                    for (let i = result.length - 1; i > result.length - 10; i--) {
-                        let arr = [new Date(result[i].date), result[i].views]
-                        newData.push(arr)
+                    if (result.length < 12) {
+                        for (let i = 0; i < result.length; i++) {
+                            let arr = [new Date(result[i].date), result[i].views]
+                            newData.push(arr)
+                        }
+                    } else {
+                        for (let i = result.length - 1; i > result.length - 10; i--) {
+                            let arr = [new Date(result[i].date), result[i].views]
+                            newData.push(arr)
+                        }
                     }
                     setPostAmount([...newData])
                 }
             }
         )()
-    }, [postAmount])
+    }, [postAmount.length])
 
     return (
         <Chart

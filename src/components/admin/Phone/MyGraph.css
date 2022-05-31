@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    width: 95vw;
     margin-left: -2rem;
 }
 
@@ -22,7 +23,6 @@
     font-size: 10.7747px;
     line-height: 13px;
     color: #D05270;
-    margin-right: 4rem;
     border: 0.769622px solid #DDDDDD;
     width: 125px;
     height: 30.78px;
