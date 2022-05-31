@@ -23,7 +23,7 @@ const Table = ({ hide, post }) => {
                                 post?.map((single, i) => (
                                     <tr key={i}>
                                         <td style={{ textAlign: 'center' }}>{i + 1}</td>
-                                        <td style={{ paddingTop: '1rem' }} className='postHook'>
+                                        <td style={{ paddingTop: '1rem' }} className='myPostHook'>
                                             <h5>{single.title}</h5>
                                             <p>{single.createdDate}</p>
                                         </td>
