@@ -69,7 +69,7 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
                 <img style={{ height: '16px' }} src={vector} alt="vector" />
                 <h6 style={{ fontWeight: 'bold', marginTop: '6px' }}>Back</h6>
             </div>
-            <div style={large ? { marginBottom: '-5rem' } : null}>
+            <div>
                 <p style={{ marginTop: '30px' }} className={large ? 'trend' : 'trend1'}>{post.title}</p>
                 <p className={large ? 'trendText' : 'trendText1'}>{post.appUser ? post.appUser.firstName : null} {post.appUser ? post.appUser.lastName : null}<img src={calender} alt='calender' style={{ marginLeft: '6px', marginBottom: '4px', marginRight: '10px', width: '14px', height: '14px' }} />{post.createdDate}</p>
             </div>

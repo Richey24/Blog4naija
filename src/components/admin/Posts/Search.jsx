@@ -1,7 +1,13 @@
+import { useState } from 'react'
 import search from '../../../img/search.svg'
 import './Table.css'
 
-const Search = () => {
+const Search = ({ filterPost }) => {
+    const [post, setPost] = useState('')
+    const getFilter = (event) => {
+        setPost(event.target.value)
+        filterPost(event.target.value)
+    }
     const style = {
         div: {
             display: 'flex',
@@ -65,7 +71,7 @@ const Search = () => {
             <div style={style.labelDiv}>
                 <label style={style.myLabel} htmlFor="myInput">
                     <img style={{ width: '20px', paddingTop: '10px' }} src={search} alt="search" />
-                    <input placeholder='Search everything' id='myInput' type="text" style={style.myInput} />
+                    <input placeholder='Search everything' value={post} onChange={getFilter} id='myInput' type="text" style={style.myInput} />
                 </label>
                 <div></div>
             </div>

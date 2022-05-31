@@ -11,10 +11,9 @@ const MyPopular = () => {
     const [post, setPost] = useState([])
     useEffect(() => {
         (async () => {
-            let response = await axios.get(`${url}/api/blog/get/page?offSet=0&category=all&pageSize=3`)
+            let response = await axios.get(`${url}/api/blog/get/popular`)
             let result = await response.data
-            setPost(result.content)
-            console.log(post);
+            setPost(result)
         })()
     }, [post])
     return (
@@ -27,8 +26,8 @@ const MyPopular = () => {
                 post.length < 1 ? (
                     <Spinner animation='border' style={{ color: "#D05270" }} />
                 ) : (
-                    post.map((single) => (
-                        <div className='myPopular'>
+                    post.map((single, i) => (
+                        <div key={i} className='myPopular'>
                             <img src={user} alt="user" />
                             <div className='myPostHook'>
                                 <h5>{single.title}</h5>

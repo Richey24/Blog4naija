@@ -3,13 +3,19 @@ import search from '../../../img/search.svg'
 import noti from '../../../img/notification.svg'
 import round from '../../../img/round.svg'
 import user from '../../../img/user-pink.svg'
-const NavBar = () => {
+import { useState } from 'react'
+const NavBar = ({ filterPost }) => {
+    const [post, setPost] = useState('')
+    const getFilter = (event) => {
+        setPost(event.target.value)
+        filterPost(event.target.value)
+    }
     return (
         <div style={{ marginTop: '2rem', marginRight: '8rem', display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
             <div className='labelDiv'>
                 <label className='myLabel' htmlFor="myInput">
                     <img style={{ width: '20px', paddingTop: '10px' }} src={search} alt="search" />
-                    <input placeholder='Search everything' id='myInput' type="text" className='myInput' />
+                    <input placeholder='Search everything' value={post} onChange={getFilter} id='myInput' type="text" className='myInput' />
                 </label>
                 <var className='noti'>
                     <img style={{ width: '20px' }} src={noti} alt="notification" />

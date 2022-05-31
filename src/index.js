@@ -13,19 +13,17 @@ import AdminPost from './components/admin/Posts/AdminPost';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <CookiesProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<App />} />
-          <Route path='/more' element={<Post />} />
-          <Route path='/edit' element={<Edit />} />
-          <Route path='/admin' element={<Dashboard />} />
-          <Route path='/adminpost' element={<AdminPost />} />
-        </Routes>
-      </BrowserRouter>
-    </CookiesProvider>
-  </React.StrictMode>
+  <CookiesProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path='/more' element={<Post />} />
+        <Route path='/edit' element={<Edit />} />
+        <Route path='/admin' element={<Dashboard />} />
+        <Route path='/adminpost' element={<AdminPost />} />
+      </Routes>
+    </BrowserRouter>
+  </CookiesProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

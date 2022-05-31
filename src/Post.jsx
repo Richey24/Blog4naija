@@ -45,7 +45,7 @@ const Post = () => {
         getPost()
         setSpin(false)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [size])
+    }, [])
 
     window.addEventListener('resize', () => { setSize(window.innerWidth) })
 

@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from 'react'
 import './Table.css'
 import view from '../../../img/view.svg'
-import axios from 'axios'
-import { url } from '../../../Env'
+
 import { Spinner } from 'react-bootstrap'
-const Table = ({ hide }) => {
-    const [post, setPost] = useState([])
-    useEffect(() => {
-        (async () => {
-            let response = await axios.get(`${url}/api/blog/get/page?offSet=0&category=all&pageSize=50`)
-            let result = await response.data
-            setPost(result.content)
-            console.log(post);
-        })()
-    }, [post])
+const Table = ({ hide, post }) => {
     return (
         <div style={{ marginTop: '2rem' }}>
             <table>
@@ -26,12 +15,12 @@ const Table = ({ hide }) => {
                     <th style={{ textAlign: 'center' }} className='action'>Action</th>
                 </thead>
                 {
-                    post.length < 1 ? (
+                    post?.length < 1 ? (
                         <Spinner animation='border' style={{ color: "#D05270" }} />
                     ) : (
                         <tbody>
                             {
-                                post.map((single, i) => (
+                                post?.map((single, i) => (
                                     <tr key={i}>
                                         <td style={{ textAlign: 'center' }}>{i + 1}</td>
                                         <td style={{ paddingTop: '1rem' }} className='postHook'>

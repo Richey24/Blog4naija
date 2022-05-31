@@ -5,17 +5,32 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 import MyNavBar from "../Phone/NavBar"
 import Search from "./Search"
+import axios from 'axios'
+import { url } from '../../../Env'
 const AdminPost = () => {
 
   const [large, setLarge] = useState(false)
   const [size, setSize] = useState(window.innerWidth)
+  const [post, setPost] = useState([])
+  const [search, setSearch] = useState([])
   useEffect(() => {
     if (size >= 800) {
       setLarge(true)
     } else {
       setLarge(false)
     }
+    (async () => {
+      let response = await axios.get(`${url}/api/blog/get/all`)
+      let result = await response.data
+      setPost(result)
+      setSearch(result)
+    })()
   }, [size])
+
+  const filterPost = (text) => {
+    let newPosts = search.filter((filtered) => filtered.title.toLowerCase().includes(text))
+    setPost(newPosts)
+  }
 
   window.addEventListener('resize', () => { setSize(window.innerWidth) })
 
@@ -39,16 +54,16 @@ const AdminPost = () => {
       <div className="dashMain">
         <SideBar active={`post`} />
         <div>
-          <NavBar />
+          <NavBar filterPost={filterPost} />
           <Header />
-          <Table />
+          <Table post={post} />
         </div>
       </div> :
       <div style={{ marginRight: "1rem", marginLeft: '1rem' }} >
         <MyNavBar active={`post`} hide={hide} name={`Posts`} />
         <div id='main'>
-          <Search />
-          <Table hide='hide' />
+          <Search filterPost={filterPost} />
+          <Table hide='hide' post={post} />
         </div>
       </div>
   )

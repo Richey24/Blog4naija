@@ -16,7 +16,6 @@ const LaptopMid = () => {
             let response = await axios.get(`${url}/api/blog/get/trending`)
             let result = await response.data
             setTrending(result)
-            console.log(result);
         })()
     }, [])
     const getPostById = (id) => {

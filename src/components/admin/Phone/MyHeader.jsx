@@ -4,8 +4,25 @@ import view from '../../../img/view.svg'
 import add from '../../../img/add.svg'
 import up from '../../../img/up.svg'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { url } from '../../../Env'
 const MyHeader = () => {
     const navigate = useNavigate()
+    const [increment, setIncrement] = useState(0)
+    const [total, setTotal] = useState(0)
+    useEffect(() => {
+        (async () => {
+            let response = await axios.get(`${url}/api/blog/get/all`)
+            let result = await response.data
+            let response1 = await axios.get(`${url}/api/stat`)
+            let result2 = await response1.data
+            let arr = result
+            let total = arr.reduce((a, b) => parseInt(a) + parseInt(b.view), 0)
+            setIncrement(result2[result2.length - 1].views);
+            setTotal(total)
+        })()
+    })
     return (
         <div className='myMain'>
             <div className="myWelcome">
@@ -24,8 +41,8 @@ const MyHeader = () => {
             </div>
             <div className='myTotals'>
                 <div className='myViews'>
-                    <h5>2,223,215</h5>
-                    <p>Total Views <span><img src={up} alt="up" />+22</span></p>
+                    <h5>{total}</h5>
+                    <p>Total Views <span><img src={up} alt="up" />+{increment}</span></p>
                 </div>
                 <div className='myViews'>
                     <h5>2,223,215</h5>
