@@ -99,7 +99,7 @@ const Table = ({ large }) => {
                                                         </p>
                                                     }
                                                 </td>
-                                                <td style={{ textAlign: 'center' }}>{comment.postName}</td>
+                                                {large && <td style={{ textAlign: 'center' }}>{comment.postName}</td>}
                                                 <td style={{ textAlign: 'center' }}>{new Date(comment.createdDate).toLocaleString()}</td>
                                             </tr>
                                             {comment.reply?.map((one, j) => (
@@ -120,7 +120,7 @@ const Table = ({ large }) => {
                                                             </p>
                                                         }
                                                     </td>
-                                                    <td style={{ textAlign: 'center' }}>{comment.postName}</td>
+                                                    {large && <td style={{ textAlign: 'center' }}>{comment.postName}</td>}
                                                     <td style={{ textAlign: 'center' }}>{new Date(one.createdAt).toLocaleString()}</td>
                                                 </tr>
                                             ))}
