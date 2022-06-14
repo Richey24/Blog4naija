@@ -2,7 +2,12 @@ import './Table.css'
 import view from '../../../img/view.svg'
 
 import { Spinner } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 const Table = ({ hide, post }) => {
+    const navigate = useNavigate()
+    const getPost = (id) => {
+        navigate('/more', { state: { postId: id } })
+    }
     return (
         <div style={{ marginTop: '2rem' }}>
             <table>
@@ -21,9 +26,9 @@ const Table = ({ hide, post }) => {
                         <tbody>
                             {
                                 post?.map((single, i) => (
-                                    <tr key={i}>
+                                    <tr onClick={() => getPost(single.id)} key={i}>
                                         <td style={{ textAlign: 'center' }}>{i + 1}</td>
-                                        <td style={{ paddingTop: '1rem' }} className='myPostHook'>
+                                        <td style={{ paddingTop: '1rem', cursor: 'pointer' }} className='myPostHook'>
                                             <h5>{single.title}</h5>
                                             <p>{single.createdDate}</p>
                                         </td>

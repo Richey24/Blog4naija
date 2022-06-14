@@ -1,17 +1,12 @@
-import Graph from "./Laptop/Graph"
-import Header from "./Laptop/Header"
-import NavBar from "./Laptop/NavBar"
-import Popular from "./Laptop/Popular"
-import SideBar from "./Laptop/SideBar"
-import './Main.css'
-import { useState, useEffect } from 'react'
-import MyNavBar from "./Phone/NavBar"
-import MyHeader from "./Phone/MyHeader"
-import MyGraph from "./Phone/MyGraph"
-import Search from "./Phone/Search"
-import MyPopular from "./Phone/MyPopular"
+import NavBar from "../Laptop/NavBar"
+import SideBar from "../Laptop/SideBar"
+import Header from "./Header"
+import Table from "./Table"
+import { useEffect, useState } from "react"
+import MyNavBar from "../Phone/NavBar"
+import Search from "./Search"
+const Pages = () => {
 
-const Dashboard = () => {
     const [large, setLarge] = useState(false)
     const [size, setSize] = useState(window.innerWidth)
     useEffect(() => {
@@ -21,6 +16,7 @@ const Dashboard = () => {
             setLarge(false)
         }
     }, [size])
+
 
     window.addEventListener('resize', () => { setSize(window.innerWidth) })
 
@@ -38,27 +34,25 @@ const Dashboard = () => {
         }
     }
 
+
     return (
         large ?
             <div className="dashMain">
-                <SideBar active={`dash`} />
-                <div style={{ marginRight: '7rem' }} className="colSide">
+                <SideBar active={`page`} />
+                <div style={{ marginRight: '7rem' }}>
                     <NavBar />
                     <Header />
-                    <Graph />
-                    <Popular />
+                    <Table />
                 </div>
             </div> :
-            <div style={{ marginRight: "1rem", marginLeft: '1rem' }}>
-                <MyNavBar active={`dash`} name={`Dashboard`} hide={hide} />
+            <div style={{ marginRight: "1rem", marginLeft: '1rem' }} >
+                <MyNavBar active={`page`} hide={hide} name={`Posts`} />
                 <div id='main'>
-                    <MyHeader />
-                    <MyGraph />
                     <Search />
-                    <MyPopular />
+                    <Table hide='hide' />
                 </div>
             </div>
     )
 }
 
-export default Dashboard
+export default Pages

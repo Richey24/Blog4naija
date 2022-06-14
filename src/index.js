@@ -10,6 +10,8 @@ import Post from './Post';
 import Edit from './components/editor/Edit';
 import Dashboard from './components/admin/Dashboard';
 import AdminPost from './components/admin/Posts/AdminPost';
+import Pages from './components/admin/Pages/Pages';
+import Comment from './components/admin/Comments/Comment';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +23,8 @@ root.render(
         <Route path='/edit' element={<Edit />} />
         <Route path='/admin' element={<Dashboard />} />
         <Route path='/adminpost' element={<AdminPost />} />
+        <Route path='/page' element={<Pages />} />
+        <Route path='comment' element={<Comment />} />
       </Routes>
     </BrowserRouter>
   </CookiesProvider>

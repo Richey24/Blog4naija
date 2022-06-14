@@ -53,7 +53,7 @@ const AdminPost = () => {
     large ?
       <div className="dashMain">
         <SideBar active={`post`} />
-        <div>
+        <div style={{ marginRight: '7rem' }}>
           <NavBar filterPost={filterPost} />
           <Header />
           <Table post={post} />

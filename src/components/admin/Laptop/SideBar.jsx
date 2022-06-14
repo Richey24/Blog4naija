@@ -34,7 +34,7 @@ const SideBar = ({ active }) => {
                         <img style={{ display: 'flex', justifyContent: 'left', paddingRight: '1rem' }} src={active === 'post' ? postImagePink : postImage} alt='postImage' />
                         Posts
                     </p>
-                    <p onClick={() => navigate('/pages')} className={active === 'page' ? 'myActive' : 'notActive'}>
+                    <p onClick={() => navigate('/page')} className={active === 'page' ? 'myActive' : 'notActive'}>
                         <img style={{ display: 'flex', justifyContent: 'left', paddingRight: '1rem' }} src={active === 'page' ? pagesPink : pages} alt='pages' />
                         Pages
                     </p>

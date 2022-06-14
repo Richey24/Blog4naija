@@ -26,9 +26,15 @@ const Post = () => {
                 let response = await axios.get(`${url}/api/blog/get/${id}`)
                 let result = await response.data
                 setPost(result)
-                let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=3`)
+                let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=5`)
                 let filterResult = await filterResponse.data
-                setRelated(filterResult.content)
+                let arr = []
+                for (let i = 0; i < filterResult.content.length; i++) {
+                    if (arr.length === 3) break
+                    if (filterResult.content[i].id === result.id) continue
+                    arr.push(filterResult.content[i])
+                }
+                setRelated(arr)
                 let main = document.getElementById("main")
                 main.scrollIntoView()
             }

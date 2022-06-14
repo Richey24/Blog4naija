@@ -65,7 +65,7 @@ const Main = ({ name, filter, post }) => {
             <br />
             <ul id='view' className={filter}>
                 <li onClick={() => filterPost('all')} style={active === 'all' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>All</li>
-                <li onClick={() => filterPost('technology')} style={active === 'tech' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Technology</li>
+                <li onClick={() => filterPost('technology')} style={active === 'technology' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Technology</li>
                 <li onClick={() => filterPost('health')} style={active === 'health' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Health</li>
                 <li onClick={() => filterPost('travel')} style={active === 'travel' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Travel</li>
                 <li onClick={() => filterPost('beauty')} style={active === 'beauty' ? { borderBottom: '#D05270 solid 1px', color: '#D05270' } : null} className='list'>Beauty</li>

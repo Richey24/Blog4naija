@@ -29,7 +29,6 @@ export function MyChart({ height }) {
             async () => {
                 let response = await axios.get(`${url}/api/stat`)
                 let result = await response.data
-                console.log(result);
                 if (postAmount.length < 3) {
                     let newData = []
                     if (result.length < 12) {
