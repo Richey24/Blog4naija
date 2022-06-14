@@ -123,8 +123,8 @@ const Header = ({ large }) => {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', }}>
                             <p style={style.comment}>All|{comments.length}|</p>
-                            <p style={style.comment1}>Approved|7|</p>
-                            <p style={style.comment}>Unapproved|2|</p>
+                            <p style={style.comment1}>Approved|{comments.filter((comment) => comment.authorize === true)?.length}|</p>
+                            <p style={style.comment}>Unapproved|{comments.filter((comment) => comment.authorize === false)?.length}|</p>
                             <p style={style.comment}>Trash|2|</p>
                         </div>
                     </>
