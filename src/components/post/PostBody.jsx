@@ -226,7 +226,7 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
                                 <div style={{ borderTop: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: large ? '345px' : '180px' }}>
                                         <p style={style.commentName}>{comment.name}</p>
-                                        <span style={style.span}>about 30min ago</span>
+                                        <span style={style.span}>{new Date(comment.createdDate).toLocaleString()}</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', marginLeft: '0.8rem' }}>
                                         <img src={user} alt="user" />
