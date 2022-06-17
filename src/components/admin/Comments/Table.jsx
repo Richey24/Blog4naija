@@ -114,7 +114,7 @@ const Table = ({ large }) => {
                                                             <span style={{ cursor: 'pointer' }}>Quick Edit</span>
                                                             <span style={{ cursor: 'pointer' }} onClick={() => deleteComment(comment.postId, comment.id, one.id)}>Trash{trashLoad && '...'}</span>
                                                         </p> :
-                                                            <p style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', width: '109px' }}>
+                                                            <p style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', width: '119px' }}>
                                                                 <span style={{ cursor: 'pointer' }} onClick={() => deleteComment(comment.postId, comment.id, one.id)}>Trash{trashLoad && '...'}</span>
                                                                 <span style={{ color: '#D05270', cursor: 'pointer' }} onClick={() => unApproved(comment.postId, comment.id, one.id)}>{one.authorize ? 'Unapprove' : 'Approve'}{smallLoad && '...'}</span>
                                                             </p>
