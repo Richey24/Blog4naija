@@ -59,7 +59,7 @@ const SideBar = ({ active }) => {
                         Log Out
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '4rem', paddingBottom: '1rem' }}>
-                        <button className='addPost'><span className='newPost' style={{ paddingRight: '1rem' }}>+ </span><p className='newPost'> New Post</p></button>
+                        <button onClick={()=> navigate('/edit')} className='addPost'><span className='newPost' style={{ paddingRight: '1rem' }}>+ </span><p className='newPost'> New Post</p></button>
                     </div>
                 </div>
             </div>

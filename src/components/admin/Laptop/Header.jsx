@@ -30,7 +30,7 @@ const Header = () => {
                 <p>Start your today’s blog experience with these quick links</p>
             </div>
             <ul>
-                <li onClick={() => navigate('/post')}><img src={clarity} alt='clarity' />Write a new post</li>
+                <li onClick={() => navigate('/edit')}><img src={clarity} alt='clarity' />Write a new post</li>
                 <li onClick={() => navigate('/')}><img style={{ marginRight: '13px' }} src={view} alt='view' />View website</li>
                 <li onClick={() => navigate('/page')}><img style={{ marginRight: '13px' }} src={add} alt="add" />Add new page</li>
                 <li onClick={() => navigate('/category')}><img style={{ marginRight: '13px' }} src={add} alt="add" />Add new category</li>

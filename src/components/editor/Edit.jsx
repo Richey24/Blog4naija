@@ -1,5 +1,21 @@
 import { useEffect, useRef, useState } from "react"
-import '../../App.css'
+import './Edit.css'
+import img from '../../img/dashicons_admin-media.svg'
+import bold from '../../img/foundation_bold.svg'
+import italic from '../../img/Frame 390.svg'
+import underline from '../../img/ant-design_underline-outlined.svg'
+import strike from '../../img/uil_text-strike-through.svg'
+import undo from '../../img/bx_undo.svg'
+import redo from '../../img/bx_redo.svg'
+import quote from '../../img/bxs_quote-alt-left.svg'
+import list from '../../img/fluent_text-bullet-list-ltr-16-regular.svg'
+import numList from '../../img/Group 418.svg'
+import left from '../../img/icomoon-free_paragraph-left.svg'
+import right from '../../img/icomoon-free_paragraph-right.svg'
+import center from '../../img/icomoon-free_paragraph-center.svg'
+import link from '../../img/akar-icons_link-chain.svg'
+import form from '../../img/fluent_form-28-regular.svg'
+
 
 const Edit = () => {
     const [text, setText] = useState("")
@@ -19,54 +35,46 @@ const Edit = () => {
     }
 
     useEffect(() => {
-        document.getElementById('text1').focus()
-        let myText = document.getElementById('text1')
-        console.log(myText.childNodes);
-        if (!selectedImage) return
-        const imageUrl = URL.createObjectURL(selectedImage)
-        document.execCommand('insertImage', true, imageUrl)
-        let arr = Array.from(myText.childNodes)
-        arr.reverse()
-        myText.append(...arr)
-        if (typeof window.getSelection !== "undefined" && typeof document.createRange !== "undefined") {
-            let range = document.createRange()
-            range.selectNodeContents(myText)
-            range.collapse(false)
-            let sel = window.getSelection()
-            sel.removeAllRanges()
-            sel.addRange(range)
-        } else if (typeof document.body.createTextRange !== "undefined") {
-            let textRange = document.body.createTextRange()
-            textRange.moveToElementText(myText)
-            textRange.collapse(false)
-            textRange.select()
-        }
-        // setPreview([...preview, imageUrl])
-        return () => URL.revokeObjectURL(imageUrl)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedImage])
+
+    }, [])
 
     return (
         <div style={{ marginRight: '2rem' }}>
-            <div className="mySpan">
-                <span contentEditable="true" className='textArea' ref={firstInput} style={{ wordWrap: 'break-word' }} id="text1">
-                </span>
-                <label className="myLabel" htmlFor="upload"><input onInput={getImage} id='upload' style={{ display: 'none' }} type='file' />+</label>
+            <h3 className="addHeading">ADD A NEW POST</h3>
+            <div className="addContainer">
+                <div className="addGrid1">
+                    <input type="text" placeholder="Blog Post Title" className="gridInput" />
+                    <p className="permalink">Permalink: <h6> http://erosupdate.com/sample-blog-post/ </h6> <span>Edit</span></p>
+
+                    <div className="addTools">
+                        <p className="addMedia"><img src={img} alt="" /> Add Media</p>
+                        <select className="paragraph">
+                            <option value="Paragraph" selected>Paragraph</option>
+                            <option value="Heading">Heading</option>
+                            <option value="SubHeading">SubHeading</option>
+                        </select>
+                        <img src={bold} alt="" />
+                        <img src={italic} alt="" />
+                        <img src={strike} alt="" />
+                        <img src={underline} alt="" />
+                        <img src={quote} alt="" />
+                        <img src={list} alt="" />
+                        <img src={numList} alt="" />
+                        <img src={left} alt="" />
+                        <img src={center} alt="" />
+                        <img src={right} alt="" />
+                        <img src={link} alt="" />
+                        <img src={form} alt="" />
+                        <img src={undo} alt="" />
+                        <img src={redo} alt="" />
+                    </div>
+                    <textarea className="addInput"></textarea>
+                    <div className="wordCount">Word count: 0</div>
+                </div>
+                <div className="addGrid2">
+
+                </div>
             </div>
-            <button onClick={() => makeBold('bold')}>make bold</button>
-            <button onClick={() => makeBold('italic')}>make italic</button>
-            <button onClick={() => makeBold('underline')}>underline</button>
-            <button onClick={() => makeBold('formatBlock', 'H1')}>make heading</button>
-            <button onClick={() => makeBold('createLink', 'http://localhost:3000')}>make link</button>
-            <button onClick={() => makeBold('fontName', 'Arial')}>change font</button>
-            <button onClick={() => makeBold('foreColor', '#D05270')}>set color</button>
-            <button onClick={() => makeBold('fontSize', '1')}>set fontsize</button>
-            <button onClick={() => makeBold('undo')}>undo</button>
-            <button onClick={() => makeBold('redo')}>redo</button>
-            <button onClick={() => makeBold('unlink')}>unlink</button>
-            <button onClick={() => makeBold('justifyCenter')}>move center</button>
-            <button onClick={() => makeBold('justifyLeft')}>move left</button>
-            <button onClick={() => makeBold('justifyRight')}>move right</button>
         </div>
     )
 }

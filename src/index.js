@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { CookiesProvider } from 'react-cookie'
 import Post from './Post';
-import Edit from './components/editor/Edit';
+import Main from './components/editor/Main';
 import Dashboard from './components/admin/Dashboard';
 import AdminPost from './components/admin/Posts/AdminPost';
 import Pages from './components/admin/Pages/Pages';
@@ -20,7 +20,7 @@ root.render(
       <Routes>
         <Route path='/' element={<App />} />
         <Route path='/more' element={<Post />} />
-        <Route path='/edit' element={<Edit />} />
+        <Route path='/edit' element={<Main />} />
         <Route path='/admin' element={<Dashboard />} />
         <Route path='/adminpost' element={<AdminPost />} />
         <Route path='/page' element={<Pages />} />
@@ -33,4 +33,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);

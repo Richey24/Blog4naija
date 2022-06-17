@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
     const style = {
@@ -45,11 +46,12 @@ const Header = () => {
             color: '#FFFFFF',
         }
     }
+    const navigate = useNavigate()
     return (
         <div style={style.div}>
             <p style={style.p}>Post</p>
             <div style={style.buttonDiv}>
-                <button style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>New Post</p></button>
+                <button onClick={()=>navigate("/edit")} style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>New Post</p></button>
             </div>
         </div>
     )

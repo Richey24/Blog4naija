@@ -11,7 +11,7 @@ const NavBar = ({ filterPost }) => {
         filterPost(event.target.value)
     }
     return (
-        <div style={{ marginTop: '2rem', marginRight: '8rem', display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ marginTop: '2rem', marginRight: '4rem', display: 'flex', justifyContent: 'center', flexWrap: 'nowrap' }}>
             <div className='labelDiv'>
                 <label className='myLabel' htmlFor="myInput">
                     <img style={{ width: '20px', paddingTop: '10px' }} src={search} alt="search" />
