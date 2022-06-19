@@ -36,8 +36,10 @@ const Main = () => {
         large ?
             <div className="dashMain">
                 <SideBar active={`post`} />
-                <div style={{ marginRight: '5rem' }} className="colSide">
-                    <NavBar />
+                <div style={{ marginRight: '1rem' }} className="colSide">
+                    <div style={{ marginLeft: '-5.3rem' }}>
+                        <NavBar />
+                    </div>
                     <Edit />
                 </div>
             </div> :
