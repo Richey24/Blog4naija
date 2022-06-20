@@ -44,7 +44,7 @@ const App = () => {
         <div style={large ? { marginLeft: '6rem', marginRight: '6rem' } : { marginLeft: '1rem', marginRight: '1rem' }}>
             {
                 spin ? (
-                    <Spinner animation="grow" variant="info" />
+                    <Spinner animation="grow" style={{ color: "#D05270" }} />
                 ) : (
                     <>
                         <Header hide={hide} />

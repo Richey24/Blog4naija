@@ -142,6 +142,7 @@
     font-size: 16px;
     line-height: 20px;
     color: #F91717;
+    cursor: pointer;
 }
 
 .moveToTrash h4 {
@@ -291,6 +292,13 @@
     background: #F9FAFA;
     border: 1px solid #D9D9D9;
     outline: none;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.addInput img {
+    max-width: 703px;
+    max-height: 400px;
 }
 
 .addTools img {
@@ -301,7 +309,6 @@
     width: 703px;
     height: 27px;
     background: #9F9F9F;
-    margin-top: -10px;
     color: white;
     padding-left: 10px;
     font-family: 'Mulish';

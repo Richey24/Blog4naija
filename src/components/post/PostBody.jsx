@@ -156,7 +156,7 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
 
             <div>
                 <h5 className={large ? 'detail' : 'detail1'}>Blog Details</h5>
-                <p className={large ? 'content' : 'content1'}>{myPost.content}</p>
+                <p dangerouslySetInnerHTML={{ __html: myPost.content }} className={large ? 'content' : 'content1'}></p>
             </div>
             {
                 large ? (

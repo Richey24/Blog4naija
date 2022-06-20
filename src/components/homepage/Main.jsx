@@ -93,7 +93,7 @@ const Main = ({ name, filter, post }) => {
 
                             <h3 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '24px', width: "auto", fontWeight: '600', color: '#D05270', } : { fontFamily: 'Montserrat', fontSize: '18px', fontWeight: '600', color: '#D05270' }}>{mainPost.title}</h3>
 
-                            <p className='wrappedWord' style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '400', color: '#424242', width: 'auto', } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '400', color: '#424242', width: '327px' }}>{mainPost.content}.</p>
+                            {/* <p dangerouslySetInnerHTML={{ __html: mainPost.content }} className='wrappedWord' style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '400', color: '#424242', width: 'auto', } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '400', color: '#424242', width: '327px' }}></p> */}
 
                             <p onClick={() => getPostById(mainPost.id)} className={post === 'post' ? 'more' : 'more1'}>Read More</p>
                         </div>
