@@ -7,6 +7,7 @@ import MyNavBar from "../Phone/NavBar"
 import Search from "./Search"
 import axios from 'axios'
 import { url } from '../../../Env'
+import '../Main.css'
 const AdminPost = () => {
 
   const [large, setLarge] = useState(false)

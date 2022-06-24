@@ -35,11 +35,11 @@ const Header = () => {
                 <li onClick={() => navigate('/page')}><img style={{ marginRight: '13px' }} src={add} alt="add" />Add new page</li>
                 <li onClick={() => navigate('/category')}><img style={{ marginRight: '13px' }} src={add} alt="add" />Add new category</li>
             </ul>
-            <div className='myViews'>
+            <div style={{ marginLeft: "1rem" }} className='myViews'>
                 <h5>{total}</h5>
                 <p>Total Views <span><img src={up} alt="up" />+{increment}</span></p>
             </div>
-            <div className='myViews'>
+            <div style={{ marginLeft: "1rem" }} className='myViews'>
                 <h5>2,223,215</h5>
                 <p>Total Comments <span><img src={up} alt="up" />+4</span></p>
             </div>

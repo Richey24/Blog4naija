@@ -2,26 +2,24 @@ import NavBar from "../admin/Laptop/NavBar"
 import SideBar from "../admin/Laptop/SideBar"
 import { useState } from 'react'
 import MyNavBar from "../admin/Phone/NavBar"
-import MyHeader from "../admin/Phone/MyHeader"
+import Search from "../admin/Posts/Search"
 import Edit from "./Edit"
+import { useEffect } from 'react';
+import '../admin/Main.css'
 
 const Main = () => {
     const [large, setLarge] = useState(false)
-    window.addEventListener("load", () => {
-        if (window.innerWidth >= 800) {
-            setLarge(true)
-        } else {
-            setLarge(false)
-        }
-    })
+    const [size, setSize] = useState(window.innerWidth)
 
-    window.addEventListener('resize', () => {
+    useEffect(() => {
         if (window.innerWidth >= 800) {
             setLarge(true)
         } else {
             setLarge(false)
         }
-    })
+    }, [size])
+
+    window.addEventListener('resize', () => { setSize(window.innerWidth) })
 
 
     const hide = () => {
@@ -45,14 +43,14 @@ const Main = () => {
                     <div style={{ marginLeft: '-5.3rem' }}>
                         <NavBar />
                     </div>
-                    <Edit />
+                    <Edit large={large} />
                 </div>
             </div> :
             <div style={{ marginRight: "1rem", marginLeft: '1rem' }}>
-                <MyNavBar active={`post`} name={`Post`} hide={hide} />
+                <MyNavBar active={`post`} name={`Add a new post`} hide={hide} />
                 <div id='main'>
-                    <MyHeader />
-
+                    <Search />
+                    <Edit large={large} />
                 </div>
             </div>
     )

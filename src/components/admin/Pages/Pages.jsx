@@ -5,6 +5,7 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 import MyNavBar from "../Phone/NavBar"
 import Search from "./Search"
+import '../Main.css'
 const Pages = () => {
 
     const [large, setLarge] = useState(false)

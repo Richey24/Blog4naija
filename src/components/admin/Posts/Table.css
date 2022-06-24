@@ -24,7 +24,7 @@ table td h6 {
     background: #A1A1A1;
     padding: 4.07849px 9.23547px;
     gap: 27px;
-    width: 93px;
+    width: fit-content;
     text-align: left;
     height: 22.16px;
     font-family: 'Montserrat';

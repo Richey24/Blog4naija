@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import search from '../../../img/search.svg'
 import './Table.css'
-
+import { useNavigate } from 'react-router-dom'
 const Search = ({ filterPost }) => {
     const [post, setPost] = useState('')
+    const navigate = useNavigate()
     const getFilter = (event) => {
         setPost(event.target.value)
         filterPost(event.target.value)
@@ -76,7 +77,7 @@ const Search = ({ filterPost }) => {
                 <div></div>
             </div>
             <div style={style.buttonDiv}>
-                <button style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>New Post</p></button>
+                <button onClick={() => navigate('/edit')} style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>New Post</p></button>
             </div>
         </div>
     )

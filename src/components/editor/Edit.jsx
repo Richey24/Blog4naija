@@ -21,12 +21,13 @@ import { url } from './../../Env';
 import { Spinner } from "react-bootstrap"
 
 
-const Edit = () => {
+const Edit = ({ large }) => {
     const [mainImage, setMainImage] = useState({})
     const [cat, setCat] = useState([])
     const [active, setActive] = useState([])
     const [title, setTitle] = useState("")
     const [load, setLoad] = useState(false)
+    const [str, setStr] = useState(0)
 
     const getImage = (event) => {
         setMainImage(event.target.files[0])
@@ -97,7 +98,6 @@ const Edit = () => {
         // let myFile = {
         //     file: mainImage
         // }
-        console.log(body);
         let postContent = await axios.post(`${url}/api/blog/save`, body)
         let postRes = await postContent.data
         console.log(postRes);
@@ -109,15 +109,24 @@ const Edit = () => {
         setLoad(false)
     }
 
+    const setCount = (e) => {
+        const keyWord = String.fromCharCode(e.keyCode);
+        if ((e.keyCode === 8) && str > 0) {
+            setStr(str - 1)
+        } else if (/^[a-zA-Z0-9!@#$%&*)(+=._-]*$/.test(keyWord) || e.keyCode === 13) {
+            setStr(str + 1)
+        }
+    }
+
     return (
         <div>
-            <h3 className="addHeading">ADD A NEW POST</h3>
-            <div className="addContainer">
-                <div className="addGrid1">
-                    <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Blog Post Title" className="gridInput" />
-                    <p className="permalink">Permalink: <h6> http://erosupdate.com/sample-blog-post/ </h6> <span>Edit</span></p>
+            {large && <h3 className="addHeading">ADD A NEW POST</h3>}
+            <div className={large ? "addContainer" : "addContainerSmall"}>
+                <div className={large ? "addGrid1" : "addGridSmall1"}>
+                    <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Blog Post Title" className={large ? "gridInput" : "gridInputSmall"} />
+                    <p className={large ? "permalink" : "permalinkSmall"}>Permalink: <h6> http://erosupdate.com/sample-blog-post/ </h6> <span>Edit</span></p>
 
-                    <div className="addTools">
+                    <div className={large ? "addTools" : "addToolsSmall"}>
                         <input onChange={(e) => uploadImage(e)} hidden type='file' id='addMedia' />
                         <label style={{ marginBottom: '15px' }} htmlFor="addMedia" className="addMedia"><img src={img} alt="" /> Add Media</label>
                         <select onChange={(e) => editText('fontSize', e.target.value)} className="paragraph">
@@ -125,16 +134,13 @@ const Edit = () => {
                             <option value="7">Heading</option>
                             <option value="5">SubHeading</option>
                         </select>
-                        <img style={{ backgroundColor: active.includes("bold") ? "gray" : '' }} onClick={() => { editText("bold") }} src={bold} alt="" />
-
-                        <img style={{ backgroundColor: active.includes("italic") ? "gray" : '' }} onClick={() => { editText("italic") }} src={italic} alt="" />
-
-                        <img style={{ backgroundColor: active.includes("strikeThrough") ? "gray" : '' }} onClick={() => { editText("strikeThrough") }} src={strike} alt="" />
-
-                        <img style={{ backgroundColor: active.includes("underline") ? "gray" : '' }} onClick={() => { editText("underline") }} src={underline} alt="" />
+                        <img onClick={() => { editText("bold") }} src={bold} alt="" />
+                        <img onClick={() => { editText("italic") }} src={italic} alt="" />
+                        <img onClick={() => { editText("strikeThrough") }} src={strike} alt="" />
+                        <img onClick={() => { editText("underline") }} src={underline} alt="" />
                         <img onClick={() => { editText("insertText", '""') }} src={quote} alt="" />
-                        <img style={{ backgroundColor: active.includes("insertUnorderedList") ? "gray" : '' }} onClick={() => { editText("insertUnorderedList") }} src={list} alt="" />
-                        <img style={{ backgroundColor: active.includes("insertOrderedList") ? "gray" : '' }} onClick={() => { editText("insertOrderedList") }} src={numList} alt="" />
+                        <img onClick={() => { editText("insertUnorderedList") }} src={list} alt="" />
+                        <img onClick={() => { editText("insertOrderedList") }} src={numList} alt="" />
                         <img onClick={() => { editText("justifyLeft") }} src={left} alt="" />
                         <img onClick={() => { editText("justifyCenter") }} src={center} alt="" />
                         <img onClick={() => { editText("justifyRight") }} src={right} alt="" />
@@ -143,11 +149,11 @@ const Edit = () => {
                         <img onClick={() => { editText("undo") }} src={undo} alt="" />
                         <img onClick={() => { editText("redo") }} src={redo} alt="" />
                     </div>
-                    <div contentEditable="true" className="addInput" id="addInput"></div>
-                    <div className="wordCount">Word count: 0</div>
+                    <div onKeyDown={setCount} contentEditable="true" className={large ? "addInput" : "addInputSmall"} id="addInput"></div>
+                    <div className={large ? "wordCount" : "wordCountSmall"}>Word count: {str}</div>
                 </div>
-                <div className="addGrid2">
-                    <div className="myPublish"><p>Publish</p> <img onClick={() => hide("publish")} src={poly} alt="poly" /></div>
+                <div className={large ? "addGrid2" : "addGridSmall2"}>
+                    <div className={large ? "myPublish" : "myPublishSmall"}><p>Publish</p> <img onClick={() => hide("publish")} src={poly} alt="poly" /></div>
                     <div className="publish" id="publish">
                         <section className="mySect">
                             <aside className="draft">
@@ -163,15 +169,15 @@ const Edit = () => {
                         </section>
                     </div>
                     <br />
-                    <div className="myPublish"><p>Featured Image</p> <img onClick={() => hide("featured")} src={poly} alt="poly" /></div>
+                    <div className={large ? "myPublish" : "myPublishSmall"}><p>Featured Image</p> <img onClick={() => hide("featured")} src={poly} alt="poly" /></div>
                     <div className="featured" id="featured">
                         <input onChange={getImage} type="file" id="featuredImage" hidden />
                         <label className="featuredImage" htmlFor="featuredImage">Set featured image</label>
                     </div>
                     <br />
-                    <div className="myPublish"><p>Categories</p> <img onClick={() => hide("selectCart")} src={poly} alt="poly" /></div>
+                    <div className={large ? "myPublish" : "myPublishSmall"}><p>Categories</p> <img onClick={() => hide("selectCart")} src={poly} alt="poly" /></div>
                     <div className="selectCart" id="selectCart">
-                        <div style={{ display: 'flex', justifyContent: 'space-between', width: "70%", alignItems: 'center' }}><p>All Categories</p> <p className="featuredImage">Add new</p></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', width: "90%", alignItems: 'center' }}><p>All Categories</p> <p className="featuredImage">Add new</p></div>
                         <label htmlFor="General"><input onClick={getCat} type="checkbox" value="General" /> General</label>
                         <br />
                         <label htmlFor="Technology"><input onClick={getCat} type="checkbox" value="Technology" /> Technology</label>
@@ -185,7 +191,7 @@ const Edit = () => {
                         <label htmlFor="News"><input onClick={getCat} type="checkbox" value="News" /> News</label>
                     </div>
                     <br />
-                    <div className="myPublish"><p>Tags</p> <img onClick={() => hide("selectTag")} src={poly} alt="poly" /></div>
+                    <div className={large ? "myPublish" : "myPublishSmall"}><p>Tags</p> <img onClick={() => hide("selectTag")} src={poly} alt="poly" /></div>
                     <div className="selectTag" id="selectTag">
                         <p>Add a coma after a tag before another</p>
                         <input type="text" placeholder="Cake, Burger" />

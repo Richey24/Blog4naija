@@ -7,8 +7,17 @@
     margin-bottom: 5rem;
 }
 
+.addContainerSmall {
+    margin-top: 1rem;
+}
+
 .addGrid2 {
     margin-left: 2rem;
+}
+
+.addGridSmall2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .addGrid1 {
@@ -20,9 +29,40 @@
 .publish {
     display: none;
     box-sizing: border-box;
-    width: 346px;
+    width: 100%;
     height: 189px;
     border: 1px solid #D9D9D9;
+}
+
+.myPublishSmall {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.myPublishSmall p {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #424242;
+    margin-top: 15px;
+}
+
+.myPublishSmall img {
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.myPublishSmall img:hover {
+    filter: opacity(0.4) drop-shadow(0 0 0 #e1204d) brightness(1.2);
 }
 
 .myPublish {
@@ -58,7 +98,7 @@
 
 .draft {
     box-sizing: border-box;
-    width: 346px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -169,7 +209,7 @@
 
 .selectCart {
     box-sizing: border-box;
-    width: 346px;
+    width: 100%;
     height: 208px;
     border: 1px solid #D9D9D9;
     padding-left: 10px;
@@ -183,7 +223,7 @@
 
 .selectTag {
     box-sizing: border-box;
-    width: 346px;
+    width: 100%;
     height: 152px;
     border: 1px solid #D9D9D9;
     font-family: 'Mulish';
@@ -192,7 +232,7 @@
     font-size: 16px;
     line-height: 20px;
     color: #424242;
-    padding-left: 10px;
+    padding-left: 7px;
     padding-top: 10px;
     display: none;
 }
@@ -216,7 +256,7 @@
 
 .featured {
     box-sizing: border-box;
-    width: 346px;
+    width: 100%;
     height: 55px;
     padding-top: 15px;
     padding-left: 5px;
@@ -243,6 +283,25 @@
     outline: none;
 }
 
+.gridInputSmall {
+    background: #F9FAFA;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    width: 100%;
+    height: 55px;
+    padding-left: 20px;
+    outline: none;
+}
+
+.gridInputSmall::placeholder {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #A9ABAD;
+}
+
 .gridInput::placeholder {
     font-family: 'Mulish';
     font-style: normal;
@@ -262,6 +321,33 @@
     display: flex;
     align-items: baseline;
     margin-top: 1rem;
+}
+
+.permalinkSmall {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #424242;
+    display: flex;
+    align-items: baseline;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.permalinkSmall h6 {
+    color: #D05270;
+    flex-shrink: 0;
+    font-size: 0.7rem;
+}
+
+.permalinkSmall span {
+    padding: 5px 10px;
+    width: 49px;
+    height: 30px;
+    border: 1px solid #D9D9D9;
+    margin-left: 10px;
 }
 
 .permalink h6 {
@@ -286,6 +372,22 @@
     justify-content: space-around;
 }
 
+.addToolsSmall {
+    width: 100%;
+    height: 102px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .addInput {
     width: 703px;
     height: 422px;
@@ -294,6 +396,21 @@
     outline: none;
     overflow: scroll;
     overflow-x: hidden;
+}
+
+.addInputSmall {
+    width: 100%;
+    height: 370px;
+    background: #F9FAFA;
+    border: 1px solid #D9D9D9;
+    outline: none;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.addInputSmall img {
+    max-width: 100%;
+    max-height: 55.4%;
 }
 
 .addInput img {
@@ -307,6 +424,20 @@
 
 .wordCount {
     width: 703px;
+    height: 27px;
+    background: #9F9F9F;
+    color: white;
+    padding-left: 10px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 5px;
+}
+
+.wordCountSmall {
+    width: 100%;
     height: 27px;
     background: #9F9F9F;
     color: white;
