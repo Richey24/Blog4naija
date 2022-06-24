@@ -15,7 +15,6 @@ const PhoneMid = () => {
             let response = await axios.get(`${url}/api/blog/get/trending`)
             let result = await response.data
             setTrending(result)
-            console.log(result);
         })()
     }, [])
     const getPostById = (id) => {
@@ -26,7 +25,6 @@ const PhoneMid = () => {
 
             <h1 className='trend1'>Trending Post</h1>
             <h3 className='topic1'>{trending.title}</h3>
-            <p className='trendText1'>{trending.content}</p>
             <p onClick={() => getPostById(trending.id)} className='more1'>Read More</p>
             <div className='social1'>
                 <button className='socialButton11'><img style={{ height: '18.52px', width: '16.62px' }} src={twitter} alt='twitter' /> TWITTER</button>

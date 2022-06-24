@@ -1,6 +1,6 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { Spinner } from 'react-bootstrap'
 import PostBody from './components/post/PostBody'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -9,10 +9,10 @@ import { url } from './Env'
 
 const Post = () => {
     const [large, setLarge] = useState(false)
-    const [size, setSize] = useState(window.innerWidth)
     const [spin, setSpin] = useState(true)
     const [post, setPost] = useState({})
     const [related, setRelated] = useState([])
+    const [size, setSize] = useState(window.innerWidth)
     let location = useLocation()
     let navigate = useNavigate()
 
@@ -25,6 +25,7 @@ const Post = () => {
             } else {
                 let response = await axios.get(`${url}/api/blog/get/${id}`)
                 let result = await response.data
+                console.log(result);
                 setPost(result)
                 let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=5`)
                 let filterResult = await filterResponse.data
@@ -35,23 +36,22 @@ const Post = () => {
                     arr.push(filterResult.content[i])
                 }
                 setRelated(arr)
-                let main = document.getElementById("main")
-                main.scrollIntoView()
             }
         }
     }
 
-    useEffect(() => {
-        setSpin(true)
-        if (size >= 800) {
+    window.scrollTo(0, 0)
+
+    useLayoutEffect(() => {
+        if (window.innerWidth >= 800) {
             setLarge(true)
         } else {
             setLarge(false)
         }
+        setSpin(true)
         getPost()
         setSpin(false)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [size])
 
     window.addEventListener('resize', () => { setSize(window.innerWidth) })
 

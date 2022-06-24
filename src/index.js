@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Spinner } from "react-bootstrap";
 import { CookiesProvider } from "react-cookie";
-import Post from "./Post";
-import Main from "./components/editor/Main";
-import Dashboard from "./components/admin/Dashboard";
-import AdminPost from "./components/admin/Posts/AdminPost";
-import Pages from "./components/admin/Pages/Pages";
-import Comment from "./components/admin/Comments/Comment";
+const Post = React.lazy(() => import("./Post"));
+const Main = React.lazy(() => import("./components/editor/Main"));
+const Dashboard = React.lazy(() => import("./components/admin/Dashboard"));
+const AdminPost = React.lazy(() =>
+  import("./components/admin/Posts/AdminPost")
+);
+const Pages = React.lazy(() => import("./components/admin/Pages/Pages"));
+const Comment = React.lazy(() => import("./components/admin/Comments/Comment"));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,12 +22,78 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/more" element={<Post />} />
-        <Route path="/edit" element={<Main />} />
-        <Route path="/admin" element={<Dashboard />} />
-        <Route path="/adminpost" element={<AdminPost />} />
-        <Route path="/page" element={<Pages />} />
-        <Route path="comment" element={<Comment />} />
+        <Route
+          path="/more"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <Post />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/edit"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <Main />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <Dashboard />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/adminpost"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <AdminPost />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/page"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <Pages />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="comment"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <Comment />
+            </React.Suspense>
+          }
+        />
       </Routes>
     </BrowserRouter>
   </CookiesProvider>

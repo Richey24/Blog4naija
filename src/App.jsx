@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import Header from "./components/Header"
 import LaptopMid from "./components/homepage/LaptopMid"
 import { Spinner } from 'react-bootstrap'
@@ -10,17 +10,18 @@ import { url } from "./Env"
 
 const App = () => {
     const [large, setLarge] = useState(false)
-    const [size, setSize] = useState(window.innerWidth)
     const [spin, setSpin] = useState(true)
-    useEffect(() => {
+    const [size, setSize] = useState(window.innerWidth)
+
+    useLayoutEffect(() => {
+        if (window.innerWidth >= 800) {
+            setLarge(true)
+        } else {
+            setLarge(false)
+        }
         (async () => {
             setSpin(true)
             await axios.get(`${url}/api/stat/count`)
-            if (size >= 800) {
-                setLarge(true)
-            } else {
-                setLarge(false)
-            }
             setSpin(false)
         })()
     }, [size])

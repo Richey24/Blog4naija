@@ -26,7 +26,6 @@ const LaptopMid = () => {
             <div className='main'>
                 <h1 className='trend'>Trending Post</h1>
                 <h3 className='topic'>{trending.title}</h3>
-                <p className='trendText'>{trending.content}.</p>
                 <p onClick={() => getPostById(trending.id)} className='more'>Read More</p>
                 <div className='social'>
                     <button className='socialButton1'><img style={{ paddingRight: '0.6rem' }} src={twitter} alt='twitter' /> TWITTER</button>

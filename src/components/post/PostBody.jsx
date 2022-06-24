@@ -156,7 +156,7 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
 
             <div>
                 <h5 className={large ? 'detail' : 'detail1'}>Blog Details</h5>
-                <p dangerouslySetInnerHTML={{ __html: myPost.content }} className={large ? 'content' : 'content1'}></p>
+                <div dangerouslySetInnerHTML={{ __html: myPost.content }} className={large ? 'mainContent' : 'mainContent1'}></div>
             </div>
             {
                 large ? (
@@ -222,8 +222,8 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
                     <div id='comment'>
                         <h5 style={{ marginBottom: '1rem' }} className={large ? 'detail' : 'detail1'}>Comments ({myPost.comments?.filter((com) => com.authorize === true).length})</h5>
                         {
-                            myPost.comments?.filter((com) => com.authorize === true).map((comment) => (
-                                <div style={{ borderTop: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
+                            myPost.comments?.filter((com) => com.authorize === true).map((comment, i) => (
+                                <div key={i} style={{ borderTop: '0.324437px solid rgba(109, 125, 139, 0.22)', paddingBottom: '2rem', paddingTop: '2rem' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: large ? '345px' : '180px' }}>
                                         <p style={style.commentName}>{comment.name}</p>
                                         <span style={style.span}>{new Date(comment.createdDate).toLocaleString()}</span>

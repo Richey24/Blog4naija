@@ -138,3 +138,11 @@
     height: 35px;
     background-color: black;
 }
+
+.mainContent div img {
+    width: 100%;
+}
+
+.mainContent1 div img {
+    width: 100%;
+}

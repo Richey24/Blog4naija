@@ -1,22 +1,27 @@
 import NavBar from "../admin/Laptop/NavBar"
 import SideBar from "../admin/Laptop/SideBar"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import MyNavBar from "../admin/Phone/NavBar"
 import MyHeader from "../admin/Phone/MyHeader"
 import Edit from "./Edit"
 
 const Main = () => {
     const [large, setLarge] = useState(false)
-    const [size, setSize] = useState(window.innerWidth)
-    useEffect(() => {
-        if (size >= 800) {
+    window.addEventListener("load", () => {
+        if (window.innerWidth >= 800) {
             setLarge(true)
         } else {
             setLarge(false)
         }
-    }, [size])
+    })
 
-    window.addEventListener('resize', () => { setSize(window.innerWidth) })
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 800) {
+            setLarge(true)
+        } else {
+            setLarge(false)
+        }
+    })
 
 
     const hide = () => {
