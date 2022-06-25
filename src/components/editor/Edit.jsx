@@ -19,8 +19,6 @@ import poly from '../../img/Polygon 2.svg'
 import axios from 'axios';
 import { url } from './../../Env';
 import { Spinner } from "react-bootstrap"
-
-
 const Edit = ({ large }) => {
     const [mainImage, setMainImage] = useState({})
     const [cat, setCat] = useState([])
@@ -28,7 +26,6 @@ const Edit = ({ large }) => {
     const [title, setTitle] = useState("")
     const [load, setLoad] = useState(false)
     const [str, setStr] = useState(0)
-
     const getImage = (event) => {
         setMainImage(event.target.files[0])
     }
@@ -70,14 +67,18 @@ const Edit = ({ large }) => {
         }
     }
 
-    const uploadImage = (e) => {
+    const uploadImage = async (e) => {
         let inp = document.getElementById("addInput")
         placeCaretAtEnd(inp)
-        let reader = new FileReader()
-        reader.onload = function () {
-            document.execCommand('insertImage', false, reader.result)
-        }
-        reader.readAsDataURL(e.target.files[0])
+        if (!e.target.files[0]) return
+        let image = new FormData();
+        image.append(
+            "image",
+            e.target.files[0],
+            e.target.files[0].name
+        );
+        await axios.post('https://aicuback.herokuapp.com/upload', image)
+        document.execCommand('insertImage', false, `https://aicuback.herokuapp.com/image/${e.target.files[0].name}`)
     }
 
     const hide = (id) => {

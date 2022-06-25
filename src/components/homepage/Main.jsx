@@ -19,6 +19,7 @@ const Main = ({ name, filter, post }) => {
         setSpin(true)
         let response = await axios.get(`${url}/api/blog/get/page?offSet=${offSet}&category=${active}&pageSize=9`)
         let result = await response.data
+        console.log(result);
         setPosts([...posts, ...result.content])
         setSpin(false)
     }
