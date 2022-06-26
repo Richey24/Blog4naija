@@ -88,7 +88,7 @@ const Main = ({ name, filter, post }) => {
                         </>
                     ) : posts.map((mainPost) => (
                         <div style={post === 'post' ? { width: '30%' } : null} key={mainPost.id}>
-                            <img loading='lazy' placeholder='blog photo' className={post === 'post1' ? 'img' : 'img1'} src={blog} alt='blog' />
+                            <img loading='lazy' placeholder='blog photo' className={post === 'post1' ? 'img' : 'img1'} src={mainPost.mainImage ? `https://legalfxfinance.com/blog/image/${mainPost.mainImage}` : blog} alt='blog' />
 
                             <h6 style={post === 'post' ? { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', width: 'auto', marginTop: '0.3rem', color: '#424242', } : { fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '600', marginTop: '0.3rem', color: '#424242' }}>{mainPost.createdDate}</h6>
 

@@ -20,12 +20,13 @@ import axios from 'axios';
 import { url } from './../../Env';
 import { Spinner } from "react-bootstrap"
 const Edit = ({ large }) => {
-    const [mainImage, setMainImage] = useState({})
+    const [mainImage, setMainImage] = useState()
     const [cat, setCat] = useState([])
     const [active, setActive] = useState([])
     const [title, setTitle] = useState("")
     const [load, setLoad] = useState(false)
     const [str, setStr] = useState(0)
+
     const getImage = (event) => {
         setMainImage(event.target.files[0])
     }
@@ -77,8 +78,8 @@ const Edit = ({ large }) => {
             e.target.files[0],
             e.target.files[0].name
         );
-        await axios.post('https://aicuback.herokuapp.com/upload', image)
-        document.execCommand('insertImage', false, `https://aicuback.herokuapp.com/image/${e.target.files[0].name}`)
+        await axios.post('https://legalfxfinance.com/blog/upload', image)
+        document.execCommand('insertImage', false, `https://legalfxfinance.com/blog/image/${e.target.files[0].name}`)
     }
 
     const hide = (id) => {
@@ -96,17 +97,18 @@ const Edit = ({ large }) => {
             userId: "629547a93e6e5a4b32dbef4d"
         }
 
-        // let myFile = {
-        //     file: mainImage
-        // }
         let postContent = await axios.post(`${url}/api/blog/save`, body)
         let postRes = await postContent.data
         console.log(postRes);
-
-        // let myImage = await axios.post(`${url}/api/blog/upload/image`, myFile)
-
-        // let imageRes = await myImage.data
-        // console.log(imageRes);
+        if (mainImage) {
+            let image = new FormData();
+            image.append(
+                "image",
+                mainImage,
+                mainImage.name
+            );
+            await axios.post(`https://legalfxfinance.com/blog/upload`, image)
+        }
         setLoad(false)
     }
 

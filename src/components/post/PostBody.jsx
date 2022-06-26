@@ -130,7 +130,7 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
                 <p style={{ marginTop: '30px' }} className={large ? 'trend' : 'trend1'}>{myPost.title}</p>
                 <p className={large ? 'trendText' : 'trendText1'}>{myPost.appUser ? myPost.appUser.firstName : null} {myPost.appUser ? myPost.appUser.lastName : null}<img src={calender} alt='calender' style={{ marginLeft: '6px', marginBottom: '4px', marginRight: '10px', width: '14px', height: '14px' }} />{myPost.createdDate}</p>
             </div>
-            <img src={blogImage} alt="blog" style={{ width: '100%', height: large ? '500px' : 'auto' }} loading="lazy" placeholder='blog image' />
+            <img src={myPost.mainImage ? `https://legalfxfinance.com/blog/image/${myPost.mainImage}` : blogImage} alt="blog" style={{ width: '100%', height: large ? '500px' : 'auto' }} loading="lazy" placeholder='blog image' />
             <div style={{ display: 'flex', marginTop: '20px', width: '100%', justifyContent: 'space-between' }}>
                 {
                     large && (<p className='trendText'>Kindly Share This Post</p>)

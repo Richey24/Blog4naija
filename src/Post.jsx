@@ -1,6 +1,6 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
-import { useState, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Spinner } from 'react-bootstrap'
 import PostBody from './components/post/PostBody'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -9,7 +9,7 @@ import { url } from './Env'
 
 const Post = () => {
     const [large, setLarge] = useState(false)
-    const [spin, setSpin] = useState(true)
+    const [spin, setSpin] = useState(false)
     const [post, setPost] = useState({})
     const [related, setRelated] = useState([])
     const [size, setSize] = useState(window.innerWidth)
@@ -27,6 +27,7 @@ const Post = () => {
                 let result = await response.data
                 console.log(result);
                 setPost(result)
+                if (!result.category) return
                 let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=5`)
                 let filterResult = await filterResponse.data
                 let arr = []
@@ -42,7 +43,7 @@ const Post = () => {
 
     window.scrollTo(0, 0)
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (window.innerWidth >= 800) {
             setLarge(true)
         } else {
@@ -78,7 +79,7 @@ const Post = () => {
                         <Header hide={postHide} />
                         <div id='main'>
                             {
-                                post.title ? (
+                                post.content ? (
                                     <PostBody getPost={getPost} relatedPost={related} post={post} large={large} />
                                 ) : (
                                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
