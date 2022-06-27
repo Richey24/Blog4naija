@@ -15,6 +15,7 @@ const AdminPost = React.lazy(() =>
 );
 const Pages = React.lazy(() => import("./components/admin/Pages/Pages"));
 const Comment = React.lazy(() => import("./components/admin/Comments/Comment"));
+const Preview = React.lazy(() => import("./components/editor/Preview"));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -83,7 +84,7 @@ root.render(
           }
         />
         <Route
-          path="comment"
+          path="/comment"
           element={
             <React.Suspense
               fallback={
@@ -91,6 +92,18 @@ root.render(
               }
             >
               <Comment />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/preview"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <Preview />
             </React.Suspense>
           }
         />

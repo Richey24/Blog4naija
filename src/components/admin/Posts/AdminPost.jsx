@@ -15,7 +15,7 @@ const AdminPost = () => {
   const [post, setPost] = useState([])
   const [search, setSearch] = useState([])
   useEffect(() => {
-    if (size >= 800) {
+    if (window.innerWidth >= 800) {
       setLarge(true)
     } else {
       setLarge(false)

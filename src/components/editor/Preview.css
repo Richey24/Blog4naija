@@ -1,0 +1,170 @@
+.conversation {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #6D7D8B;
+}
+
+.commentInput {
+    width: 327px;
+    height: 27px;
+    background: #FFFFFF;
+    border: 0.598352px solid #BBC8D4;
+    outline: none;
+    border-radius: 1.1967px;
+    margin-bottom: 1rem;
+}
+
+.commentInput::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 175.7%;
+    color: #BBC8D4;
+}
+
+.commentText {
+    width: 327px;
+    height: 67px;
+    outline: none;
+    background: #FFFFFF;
+    border: 0.598352px solid #BBC8D4;
+    border-radius: 1.1967px;
+}
+
+.commentText::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 175.7%;
+    color: #BBC8D4;
+}
+
+.commentButton {
+    width: 211px;
+    height: 47.71px;
+    border: none;
+    background: #D05270;
+    box-shadow: 0px 0.540685px 0.540685px rgba(0, 0, 0, 0.1);
+    border-radius: 2.16274px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 11.3544px 0px;
+    gap: 4.33px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 175.7%;
+    color: #FFFFFF;
+}
+
+.commentInputLarge {
+    width: 100%;
+    height: 38px;
+    background: #FFFFFF;
+    outline: none;
+    border: 0.598352px solid #BBC8D4;
+    border-radius: 1.1967px;
+    margin-bottom: 1rem;
+}
+
+.commentInputLarge::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #BBC8D4;
+}
+
+.commentTextLarge {
+    width: 100%;
+    outline: none;
+    height: 223px;
+    background: #FFFFFF;
+    border: 0.598352px solid #BBC8D4;
+    border-radius: 1.1967px;
+    margin-bottom: 1rem;
+}
+
+.commentTextLarge::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 175.7%;
+    color: #BBC8D4;
+}
+
+.conversationLarge {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    color: #6D7D8B;
+}
+
+.socialButton111 {
+    margin-right: 2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    background-color: rgb(81, 174, 205);
+    border: none;
+}
+
+.socialButton222 {
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    color: white;
+    background-color: #1275B1;
+    border: none;
+}
+
+.socialButton333 {
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    background-color: black;
+}
+
+.mainContent div img {
+    width: 100%;
+}
+
+.mainContent1 div img {
+    width: 100%;
+}
+
+.prePublish {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    width: 75px;
+    height: 40px;
+    cursor: pointer;
+    background: #D05270;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prePublish:hover {
+    border: 1px solid #F91717;
+    background-color: white;
+    color: #F91717;
+}

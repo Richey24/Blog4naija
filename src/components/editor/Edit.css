@@ -477,3 +477,16 @@
 .hide {
     display: block;
 }
+
+.myToast {
+    background-color: #F91717;
+    position: fixed;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    z-index: 100;
+}
+
+#myToast {
+    color: black;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import './Edit.css'
 import img from '../../img/dashicons_admin-media.svg'
 import bold from '../../img/foundation_bold.svg'
@@ -18,17 +18,29 @@ import form from '../../img/fluent_form-28-regular.svg'
 import poly from '../../img/Polygon 2.svg'
 import axios from 'axios';
 import { url } from './../../Env';
-import { Spinner } from "react-bootstrap"
+import { Spinner, Toast } from "react-bootstrap"
+import { db } from "../../db"
+import { useNavigate } from "react-router-dom"
 const Edit = ({ large }) => {
-    const [mainImage, setMainImage] = useState()
+    const [mainImage, setMainImage] = useState({})
     const [cat, setCat] = useState([])
     const [active, setActive] = useState([])
     const [title, setTitle] = useState("")
     const [load, setLoad] = useState(false)
+    const [previewLoad, setPreviewLoad] = useState(false)
     const [str, setStr] = useState(0)
+    const [showA, setShowA] = useState(false);
+    const [toast, setToast] = useState("")
+    const navigate = useNavigate()
+
 
     const getImage = (event) => {
         setMainImage(event.target.files[0])
+        setToast("Featured Image Set Successfully")
+        setShowA(true)
+        setTimeout(() => {
+            setShowA(false)
+        }, 2000)
     }
 
     const getCat = (e) => {
@@ -93,19 +105,19 @@ const Edit = ({ large }) => {
             title: title,
             content: content,
             category: cat[0],
-            imageName: mainImage.name,
+            imageName: mainImage?.name,
             userId: "629547a93e6e5a4b32dbef4d"
         }
 
         let postContent = await axios.post(`${url}/api/blog/save`, body)
         let postRes = await postContent.data
         console.log(postRes);
-        if (mainImage) {
+        if (mainImage.name > 1) {
             let image = new FormData();
             image.append(
                 "image",
                 mainImage,
-                mainImage.name
+                mainImage?.name
             );
             await axios.post(`https://legalfxfinance.com/blog/upload`, image)
         }
@@ -121,8 +133,65 @@ const Edit = ({ large }) => {
         }
     }
 
+    const setPreview = async () => {
+        setPreviewLoad(true)
+        const content = document.getElementById("addInput").innerHTML
+        try {
+            const imageLink = mainImage.name ? URL.createObjectURL(mainImage) : null
+            await db.post.add({
+                title: title,
+                content: content,
+                category: cat[0],
+                imageName: imageLink,
+                userId: "629547a93e6e5a4b32dbef4d"
+            })
+            URL.revokeObjectURL(mainImage)
+            setPreviewLoad(false)
+            navigate("/preview", { state: { mainImage } })
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    let typingTimer;
+    let doneTyping = 5000
+    let myInput = document.getElementById("addInput")
+    myInput?.addEventListener("keyup", () => {
+        clearTimeout(typingTimer)
+        typingTimer = setTimeout(savePost, doneTyping)
+    })
+    myInput?.addEventListener("keydown", () => {
+        clearTimeout(typingTimer)
+    })
+
+    const savePost = () => {
+        sessionStorage.setItem("title", title)
+        sessionStorage.setItem("post", myInput?.innerHTML)
+        setToast("Saved Successfully")
+        setShowA(true)
+        setTimeout(() => {
+            setShowA(false)
+        }, 2000)
+    }
+
+    useEffect(() => {
+        let loadedInput = document.getElementById("addInput")
+        let sessionPost = sessionStorage.getItem("post")
+        let sessionTitle = sessionStorage.getItem("title")
+        if (sessionPost) {
+            loadedInput.innerHTML = sessionPost
+            setTitle(sessionTitle)
+        }
+    }, [])
+
     return (
         <div>
+            <Toast className="myToast" show={showA} onClose={() => setShowA(false)}>
+                <Toast.Header>
+                    <strong id="myToast" className="me-auto">{toast}</strong>
+                </Toast.Header>
+            </Toast>
             {large && <h3 className="addHeading">ADD A NEW POST</h3>}
             <div className={large ? "addContainer" : "addContainerSmall"}>
                 <div className={large ? "addGrid1" : "addGridSmall1"}>
@@ -152,7 +221,7 @@ const Edit = ({ large }) => {
                         <img onClick={() => { editText("undo") }} src={undo} alt="" />
                         <img onClick={() => { editText("redo") }} src={redo} alt="" />
                     </div>
-                    <div onKeyDown={setCount} contentEditable="true" className={large ? "addInput" : "addInputSmall"} id="addInput"></div>
+                    <div on onKeyDown={setCount} contentEditable="true" className={large ? "addInput" : "addInputSmall"} id="addInput"></div>
                     <div className={large ? "wordCount" : "wordCountSmall"}>Word count: {str}</div>
                 </div>
                 <div className={large ? "addGrid2" : "addGridSmall2"}>
@@ -161,7 +230,7 @@ const Edit = ({ large }) => {
                         <section className="mySect">
                             <aside className="draft">
                                 <p>Save Draft</p>
-                                <p>Preview</p>
+                                <p onClick={setPreview}>{previewLoad ? <Spinner className="mySpin" animation="border" /> : "Preview"}</p>
                             </aside>
                             <h5>Status:<h6 style={{ marginLeft: '5px' }}>Draft</h6><span style={{ marginLeft: '5px', cursor: 'pointer' }}>Edit</span></h5>
                             <h5>Visiblity:<h6 style={{ marginLeft: '5px' }}>Public</h6><span style={{ marginLeft: '5px', cursor: 'pointer' }}>Edit</span></h5>

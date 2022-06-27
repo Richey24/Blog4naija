@@ -35,6 +35,14 @@ table td h6 {
     color: #FFFFFF;
 }
 
+table td h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.7747px;
+    line-height: 13px;
+}
+
 .theView {
     margin-top: 2rem;
 }
