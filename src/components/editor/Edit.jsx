@@ -125,10 +125,10 @@ const Edit = ({ large }) => {
     }
 
     const setCount = (e) => {
-        const keyWord = String.fromCharCode(e.keyCode);
-        if ((e.keyCode === 8) && str > 0) {
+        const keyWord = e.nativeEvent.data
+        if ((e.nativeEvent.inputType === "deleteContentBackward") && str > 0) {
             setStr(str - 1)
-        } else if (/^[a-zA-Z0-9!@#$%&*)(+=._-]*$/.test(keyWord) || e.keyCode === 13) {
+        } else if (/^[a-zA-Z0-9!@#$%&*)(+=._-]*$/.test(keyWord) || e.nativeEvent.inputType === "insertParagraph") {
             setStr(str + 1)
         }
     }
@@ -157,12 +157,9 @@ const Edit = ({ large }) => {
     let typingTimer;
     let doneTyping = 5000
     let myInput = document.getElementById("addInput")
-    myInput?.addEventListener("keyup touchend", () => {
+    myInput?.addEventListener("input", () => {
         clearTimeout(typingTimer)
         typingTimer = setTimeout(savePost, doneTyping)
-    })
-    myInput?.addEventListener("keydown touchstart", () => {
-        clearTimeout(typingTimer)
     })
 
     const savePost = () => {
@@ -221,7 +218,7 @@ const Edit = ({ large }) => {
                         <img onClick={() => { editText("undo") }} src={undo} alt="" />
                         <img onClick={() => { editText("redo") }} src={redo} alt="" />
                     </div>
-                    <div onTouchEnd={setCount} onKeyDown={setCount} contentEditable="true" className={large ? "addInput" : "addInputSmall"} id="addInput"></div>
+                    <div onInput={setCount} contentEditable="true" className={large ? "addInput" : "addInputSmall"} id="addInput"></div>
                     <div className={large ? "wordCount" : "wordCountSmall"}>Word count: {str}</div>
                 </div>
                 <div className={large ? "addGrid2" : "addGridSmall2"}>
