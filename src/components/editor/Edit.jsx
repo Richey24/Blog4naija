@@ -157,11 +157,11 @@ const Edit = ({ large }) => {
     let typingTimer;
     let doneTyping = 5000
     let myInput = document.getElementById("addInput")
-    myInput?.addEventListener("keyup", () => {
+    myInput?.addEventListener("keyup touchend", () => {
         clearTimeout(typingTimer)
         typingTimer = setTimeout(savePost, doneTyping)
     })
-    myInput?.addEventListener("keydown", () => {
+    myInput?.addEventListener("keydown touchstart", () => {
         clearTimeout(typingTimer)
     })
 
@@ -221,7 +221,7 @@ const Edit = ({ large }) => {
                         <img onClick={() => { editText("undo") }} src={undo} alt="" />
                         <img onClick={() => { editText("redo") }} src={redo} alt="" />
                     </div>
-                    <div on onKeyDown={setCount} contentEditable="true" className={large ? "addInput" : "addInputSmall"} id="addInput"></div>
+                    <div onTouchEnd={setCount} onKeyDown={setCount} contentEditable="true" className={large ? "addInput" : "addInputSmall"} id="addInput"></div>
                     <div className={large ? "wordCount" : "wordCountSmall"}>Word count: {str}</div>
                 </div>
                 <div className={large ? "addGrid2" : "addGridSmall2"}>
