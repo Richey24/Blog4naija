@@ -1,0 +1,24 @@
+.mediaDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    margin-top: 0.2rem;
+}
+
+.mediaDiv img {
+    flex-wrap: 0;
+    flex-grow: 0;
+    width: 195px;
+    height: 191px;
+}
+
+@media (max-width: 640px) {
+    .mediaDiv img {
+        width: 160px;
+        height: 154px;
+    }
+}

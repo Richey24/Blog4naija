@@ -76,7 +76,7 @@ const Search = ({ filterPost }) => {
                 <div></div>
             </div>
             <div style={style.buttonDiv}>
-                <button style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>Add New</p></button>
+                <button style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>Add Page</p></button>
             </div>
         </div>
     )

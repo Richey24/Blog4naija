@@ -16,6 +16,7 @@ const AdminPost = React.lazy(() =>
 const Pages = React.lazy(() => import("./components/admin/Pages/Pages"));
 const Comment = React.lazy(() => import("./components/admin/Comments/Comment"));
 const Preview = React.lazy(() => import("./components/editor/Preview"));
+const Media = React.lazy(() => import("./components/admin/Media/Media"));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -104,6 +105,18 @@ root.render(
               }
             >
               <Preview />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/media"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <Media />
             </React.Suspense>
           }
         />

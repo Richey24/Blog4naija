@@ -47,9 +47,9 @@ const Header = () => {
     }
     return (
         <div style={style.div}>
-            <p style={style.p}>Pages</p>
+            <p style={style.p}>Media</p>
             <div style={style.buttonDiv}>
-                <button style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>Add Page</p></button>
+                <button style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>Add New</p></button>
             </div>
         </div>
     )

@@ -130,7 +130,6 @@ const Header = ({ large }) => {
                     </>
                 )
             }
-
         </div>
     )
 }
