@@ -18,9 +18,14 @@ import form from '../../img/fluent_form-28-regular.svg'
 import poly from '../../img/Polygon 2.svg'
 import axios from 'axios';
 import { url } from './../../Env';
-import { Spinner, Toast } from "react-bootstrap"
+import { Spinner, Toast, Modal, Button } from "react-bootstrap"
 import { db } from "../../db"
 import { useNavigate } from "react-router-dom"
+
+
+const imageType = ['jpg', 'jpeg', 'png', 'svg', 'webp']
+const videoType = ['mp4', 'mkv']
+const docType = ['pdf', 'doc', 'docx', 'zip', 'html']
 const Edit = ({ large }) => {
     const [mainImage, setMainImage] = useState({})
     const [cat, setCat] = useState([])
@@ -31,8 +36,30 @@ const Edit = ({ large }) => {
     const [str, setStr] = useState(0)
     const [showA, setShowA] = useState(false);
     const [toast, setToast] = useState("")
+    const [show, setShow] = useState(false);
+    const [image, setImage] = useState([])
+    const [video, setVideo] = useState([])
+    const [doc, setDoc] = useState([])
+    const [mainLoad, setMainLoad] = useState(false)
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const navigate = useNavigate()
 
+
+    const isImage = (fileName) => {
+        const iType = fileName.split(".")
+        const fileType = iType[iType.length - 1]
+        if (imageType.includes(fileType)) {
+            return "Image"
+        } else if (videoType.includes(fileType)) {
+            return "Video"
+        } else if (docType.includes(fileType)) {
+            return "Document"
+        } else {
+            return "Invalid"
+        }
+    }
 
     const getImage = (event) => {
         setMainImage(event.target.files[0])
@@ -80,7 +107,42 @@ const Edit = ({ large }) => {
         }
     }
 
+    const uploadMedia = (name) => {
+        setMainLoad(true)
+        let inp = document.getElementById("addInput")
+        placeCaretAtEnd(inp)
+        handleClose()
+        if (isImage(name) === "Image") {
+            document.execCommand("InsertParagraph")
+            document.execCommand('insertImage', false, `https://legalfxfinance.com/blog/image/${name}`)
+            document.execCommand("InsertParagraph")
+        } else if (isImage(name) === "Video") {
+            const vid = document.createElement("video")
+            vid.setAttribute("controls", "true")
+            vid.src = `https://legalfxfinance.com/blog/image/${name}`
+            document.execCommand("InsertParagraph")
+            document.execCommand("InsertParagraph")
+            document.execCommand("InsertHTML", false, vid.outerHTML)
+            document.execCommand("InsertParagraph")
+            document.execCommand("InsertParagraph")
+            placeCaretAtEnd(inp)
+        } else if (isImage(name) === "Document") {
+            const link = document.createElement("a")
+            const docFrame = document.createElement("iframe")
+            docFrame.src = `https://legalfxfinance.com/blog/image/${name}#toolbar=0`
+            link.href = `https://legalfxfinance.com/blog/document/${name}`
+            link.innerHTML = 'Download'
+            link.toggleAttribute("download")
+            document.execCommand("InsertParagraph")
+            document.execCommand("InsertHTML", false, docFrame.outerHTML)
+            document.execCommand("InsertHTML", false, link.outerHTML)
+            document.execCommand("InsertParagraph")
+        }
+        setMainLoad(false)
+    }
+
     const uploadImage = async (e) => {
+        setMainLoad(true)
         let inp = document.getElementById("addInput")
         placeCaretAtEnd(inp)
         if (!e.target.files[0]) return
@@ -91,7 +153,32 @@ const Edit = ({ large }) => {
             e.target.files[0].name
         );
         await axios.post('https://legalfxfinance.com/blog/upload', image)
-        document.execCommand('insertImage', false, `https://legalfxfinance.com/blog/image/${e.target.files[0].name}`)
+        if (isImage(e.target.files[0].name) === "Image") {
+            document.execCommand("InsertParagraph")
+            document.execCommand('insertImage', false, `https://legalfxfinance.com/blog/image/${e.target.files[0].name}`)
+            document.execCommand("InsertParagraph")
+        } else if (isImage(e.target.files[0].name) === "Video") {
+            const vid = document.createElement("video")
+            vid.setAttribute("controls", "true")
+            vid.src = `https://legalfxfinance.com/blog/image/${e.target.files[0].name}`
+            document.execCommand("InsertParagraph")
+            document.execCommand("InsertHTML", false, vid.outerHTML)
+            document.execCommand("InsertParagraph")
+            placeCaretAtEnd(inp)
+        } else if (isImage(e.target.files[0].name) === "Document") {
+            const link = document.createElement("a")
+            const docFrame = document.createElement("iframe")
+            docFrame.src = `https://legalfxfinance.com/blog/image/${e.target.files[0].name}#toolbar=0`
+            docFrame.setAttribute("scrolling", "no")
+            link.href = `https://legalfxfinance.com/blog/document/${e.target.files[0].name}`
+            link.innerHTML = 'Download'
+            link.toggleAttribute("download")
+            document.execCommand("InsertParagraph")
+            document.execCommand("InsertHTML", false, docFrame.outerHTML)
+            document.execCommand("InsertHTML", false, link.outerHTML)
+            document.execCommand("InsertParagraph")
+        }
+        setMainLoad(false)
     }
 
     const hide = (id) => {
@@ -163,8 +250,8 @@ const Edit = ({ large }) => {
     })
 
     const savePost = () => {
-        sessionStorage.setItem("title", title)
-        sessionStorage.setItem("post", myInput?.innerHTML)
+        localStorage.setItem("title", title)
+        localStorage.setItem("post", myInput?.innerHTML)
         setToast("Saved Successfully")
         setShowA(true)
         setTimeout(() => {
@@ -174,16 +261,26 @@ const Edit = ({ large }) => {
 
     useEffect(() => {
         let loadedInput = document.getElementById("addInput")
-        let sessionPost = sessionStorage.getItem("post")
-        let sessionTitle = sessionStorage.getItem("title")
+        let sessionPost = localStorage.getItem("post")
+        let sessionTitle = localStorage.getItem("title")
         if (sessionPost) {
             loadedInput.innerHTML = sessionPost
             setTitle(sessionTitle)
         }
+        (async () => {
+            let res = await axios.get("https://legalfxfinance.com/blog/get/all/image")
+            let rep = await res.data
+            let onlyImage = rep.filter((img) => isImage(img) === "Image")
+            let onlyVideo = rep.filter((img) => isImage(img) === "Video")
+            let onlyDoc = rep.filter((img) => isImage(img) === "Document")
+            setImage(onlyImage);
+            setVideo(onlyVideo);
+            setDoc(onlyDoc);
+        })()
     }, [])
 
     return (
-        <div>
+        <div className={mainLoad ? "blurBack" : ""}>
             <Toast className="myToast" show={showA} onClose={() => setShowA(false)}>
                 <Toast.Header>
                     <strong id="myToast" className="me-auto">{toast}</strong>
@@ -194,10 +291,9 @@ const Edit = ({ large }) => {
                 <div className={large ? "addGrid1" : "addGridSmall1"}>
                     <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Blog Post Title" className={large ? "gridInput" : "gridInputSmall"} />
                     <p className={large ? "permalink" : "permalinkSmall"}>Permalink: <h6> http://erosupdate.com/sample-blog-post/ </h6> <span>Edit</span></p>
-
                     <div className={large ? "addTools" : "addToolsSmall"}>
                         <input onChange={(e) => uploadImage(e)} hidden type='file' id='addMedia' />
-                        <label style={{ marginBottom: '15px' }} htmlFor="addMedia" className="addMedia"><img src={img} alt="" /> Add Media</label>
+                        <p style={{ marginBottom: '15px' }} onClick={handleShow} className="addMedia"><img src={img} alt="" /> Add Media</p>
                         <select onChange={(e) => editText('fontSize', e.target.value)} className="paragraph">
                             <option value="3" selected>Paragraph</option>
                             <option value="7">Heading</option>
@@ -269,6 +365,45 @@ const Edit = ({ large }) => {
                     </div>
                 </div>
             </div>
+            {mainLoad && (<Spinner className="uploadSpin" animation='border' style={{ color: "#D05270" }} />)}
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Media</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className='mediaModal'>
+                    <div className='mediaDiv'>
+                        {
+                            image.map((post, i) => (
+                                <img onClick={() => uploadMedia(post)} key={i} src={`https://legalfxfinance.com/blog/image/${post}`} alt="postimage" />
+                            ))
+                        }
+                        {
+                            video.map((post, i) => (
+                                <div key={i}>
+                                    <video src={`https://legalfxfinance.com/blog/image/${post}`} controls></video>
+                                    <p onClick={() => uploadMedia(post)}>Upload</p>
+                                </div>
+                            ))
+                        }
+                        {
+                            doc.map((post, i) => (
+                                <div key={i}>
+                                    <iframe src={`https://legalfxfinance.com/blog/image/${post}`} frameborder="0" title='pdf'></iframe>
+                                    <p onClick={() => uploadMedia(post)}>Upload</p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        <label htmlFor="addMedia" > Upload New Media</label>
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     )
 }

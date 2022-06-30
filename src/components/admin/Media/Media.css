@@ -16,9 +16,27 @@
     height: 191px;
 }
 
+.mediaDiv video {
+    flex-wrap: 0;
+    flex-grow: 0;
+    width: 205px;
+    height: 201px;
+}
+
+.mediaDiv iframe {
+    flex-wrap: 0;
+    flex-grow: 0;
+    width: 195px;
+    height: 191px;
+}
+
 @media (max-width: 640px) {
     .mediaDiv img {
         width: 160px;
         height: 154px;
+    }
+
+    .mediaDiv video {
+        width: 160px;
     }
 }

@@ -76,15 +76,6 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
         }
     }
 
-
-    const textToSpeech = () => {
-        if ('speechSynthesis' in window) {
-            let speech = new SpeechSynthesisUtterance(post.content)
-            window.speechSynthesis.speak(speech)
-        } else {
-            alert('your browser does not support text to speech')
-        }
-    }
     const getReply = (id) => {
         setRID(id)
         input.current.focus()
@@ -151,9 +142,6 @@ const PostBody = ({ large, post, relatedPost, getPost }) => {
                     )
                 }
             </div>
-
-            <button onClick={textToSpeech}>Play</button>
-
             <div>
                 <h5 className={large ? 'detail' : 'detail1'}>Blog Details</h5>
                 <div dangerouslySetInnerHTML={{ __html: myPost.content }} className={large ? 'mainContent' : 'mainContent1'}></div>
