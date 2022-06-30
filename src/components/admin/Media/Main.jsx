@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Media.css';
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Modal, Button } from 'react-bootstrap';
 
 
 const imageType = ['jpg', 'jpeg', 'png', 'svg', 'webp']
@@ -22,12 +22,14 @@ const isImage = (fileName) => {
     }
 }
 
-const Main = ({ large }) => {
+const Main = ({ large, handleClose, show }) => {
     const [posts, setPosts] = useState([])
     const [image, setImage] = useState([])
     const [video, setVideo] = useState([])
     const [doc, setDoc] = useState([])
     const [load, setLoad] = useState(false)
+    const [mainLoad, setMainLoad] = useState(false)
+
     useEffect(() => {
         (async () => {
             setLoad(true)
@@ -63,12 +65,68 @@ const Main = ({ large }) => {
         },
     }
 
+    const dragOver = (e) => {
+        e.preventDefault()
+    }
+
+    const dropFile = async (e) => {
+        e.preventDefault()
+        handleClose()
+        setMainLoad(true)
+        for (let i = 0; i < e.dataTransfer.items.length; i++) {
+            let dragFile = e.dataTransfer.items[i].getAsFile()
+            let dropFile = new FormData();
+            dropFile.append(
+                "image",
+                dragFile,
+                dragFile.name
+            );
+            axios.post('https://legalfxfinance.com/blog/upload', dropFile)
+        }
+        setMainLoad(false)
+        setLoad(true)
+        let res = await axios.get("https://legalfxfinance.com/blog/get/all/image")
+        let rep = await res.data
+        setPosts(rep)
+        let onlyImage = rep.filter((img) => isImage(img) === "Image")
+        let onlyVideo = rep.filter((img) => isImage(img) === "Video")
+        let onlyDoc = rep.filter((img) => isImage(img) === "Document")
+        setImage(onlyImage);
+        setVideo(onlyVideo);
+        setDoc(onlyDoc);
+        setLoad(false)
+    }
+
+    const uploadImage = async (e) => {
+        handleClose()
+        setMainLoad(true)
+        let image = new FormData();
+        image.append(
+            "image",
+            e.target.files[0],
+            e.target.files[0].name
+        );
+        await axios.post('https://legalfxfinance.com/blog/upload', image)
+        setMainLoad(false)
+        setLoad(true)
+        let res = await axios.get("https://legalfxfinance.com/blog/get/all/image")
+        let rep = await res.data
+        setPosts(rep)
+        let onlyImage = rep.filter((img) => isImage(img) === "Image")
+        let onlyVideo = rep.filter((img) => isImage(img) === "Video")
+        let onlyDoc = rep.filter((img) => isImage(img) === "Document")
+        setImage(onlyImage);
+        setVideo(onlyVideo);
+        setDoc(onlyDoc);
+        setLoad(false)
+    }
+
     return (
         load ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
             <Spinner animation='border' style={{ color: "#D05270" }} />
-        </div>
+        </div >
             :
-            <div style={{ marginTop: '1rem' }}>
+            <div className={mainLoad ? "blurBack" : ""} style={{ marginTop: '1rem' }}>
                 {
                     large ? (
                         <>
@@ -92,7 +150,7 @@ const Main = ({ large }) => {
                         </>
                     )
                 }
-
+                {mainLoad && (<Spinner className="uploadSpin" animation='border' style={{ color: "#D05270" }} />)}
                 <div className='mediaDiv'>
                     {
                         image.map((post, i) => (
@@ -110,6 +168,26 @@ const Main = ({ large }) => {
                         ))
                     }
                 </div>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Media</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className='mediaModalMain'>
+                        <div onDrop={dropFile} onDragOver={dragOver} className="uploadMainMedia">
+                            <input onChange={uploadImage} type="file" hidden id='myFile' />
+                            <center>
+                                <p>Drop files to upload</p>
+                                <span>or</span>
+                                <label htmlFor='myFile'>Select Files</label>
+                            </center>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button style={{ backgroundColor: '#D9758D', border: 'none', outline: 'none' }} onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
     )
 }

@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Spinner } from "react-bootstrap";
 import { CookiesProvider } from "react-cookie";
+import User from "./components/admin/Users/User";
 const Post = React.lazy(() => import("./Post"));
 const Main = React.lazy(() => import("./components/editor/Main"));
 const Dashboard = React.lazy(() => import("./components/admin/Dashboard"));
@@ -117,6 +118,18 @@ root.render(
               }
             >
               <Media />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <React.Suspense
+              fallback={
+                <Spinner animation="border" style={{ color: "#D05270" }} />
+              }
+            >
+              <User />
             </React.Suspense>
           }
         />

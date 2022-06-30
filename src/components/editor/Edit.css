@@ -586,4 +586,8 @@
     .mediaModal {
         height: 300px;
     }
+
+    .mediaDiv iframe {
+        width: 150px;
+    }
 }

@@ -32,11 +32,12 @@ const Table = ({ large }) => {
             postId: postId,
             replyId: replyId
         }
-        let res = await axios.delete(`${url}/api/blog/delete/comment`, {
+        await axios.delete(`${url}/api/blog/delete/comment`, {
             data: body
         })
-        let rep = await res.data
-        setComments(rep.comments)
+        let res = await axios.get(`${url}/api/blog/comments/getall`)
+        let rep = res.data
+        setComments(rep)
         setTrashLoad(false)
     }
 
@@ -97,7 +98,7 @@ const Table = ({ large }) => {
                                                             <span style={{ cursor: 'pointer' }} onClick={() => deleteComment(comment.postId, comment.id)}>Trash{trashLoad && '...'}</span>
                                                             <span style={{ color: '#D05270', cursor: 'pointer' }} onClick={() => unApproved(comment.postId, comment.id)}>{comment.authorize ? 'Unapprove' : 'Approve'}{smallLoad && '...'}</span>
                                                         </p>
-                                                    } 
+                                                    }
                                                 </td>
                                                 {large === 'large' && <td style={{ textAlign: 'center' }}>{comment.postName}</td>}
                                                 <td style={{ textAlign: 'center' }}>{new Date(comment.createdDate).toLocaleString()}</td>

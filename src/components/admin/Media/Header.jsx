@@ -1,5 +1,5 @@
 
-const Header = () => {
+const Header = ({ handleShow }) => {
     const style = {
         div: {
             display: 'flex',
@@ -49,7 +49,7 @@ const Header = () => {
         <div style={style.div}>
             <p style={style.p}>Media</p>
             <div style={style.buttonDiv}>
-                <button style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>Add New</p></button>
+                <button onClick={handleShow} style={style.button}><span style={style.buttonSpan}>+</span><p style={style.buttonP}>Add New</p></button>
             </div>
         </div>
     )

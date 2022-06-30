@@ -1,0 +1,55 @@
+table {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+thead {
+    border-bottom: 0.826377px solid #DDDDDD;
+}
+
+th {
+    padding-bottom: 1.5rem;
+}
+
+table th {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 18px;
+    color: #2C2C2C;
+}
+
+.strongUserName {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #D05270;
+}
+
+td {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #424242;
+}
+
+@media (max-width: 640px) {
+    table th {
+        font-size: 14px;
+        padding-bottom: 1rem;
+    }
+
+    table {
+        margin-top: 1rem;
+    }
+
+    td,
+    .strongUserName {
+        font-size: 14px;
+    }
+}

@@ -25,7 +25,6 @@ const Post = () => {
             } else {
                 let response = await axios.get(`${url}/api/blog/get/${id}`)
                 let result = await response.data
-                console.log(result);
                 setPost(result)
                 if (!result.category) return
                 let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=5`)

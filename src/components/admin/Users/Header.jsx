@@ -1,20 +1,4 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
-import { url } from "../../../Env"
 const Header = ({ large }) => {
-    const [comments, setComments] = useState([])
-    useEffect(() => {
-        (
-            async () => {
-                let arr = []
-                let res = await axios.get(`${url}/api/blog/comments/getall`)
-                let rep = res.data
-                rep.map((one) => arr.push(...one.reply))
-                arr.push(...rep)
-                setComments(arr)
-            }
-        )()
-    }, [])
     const style = {
         div: {
             marginTop: '1rem'
@@ -59,7 +43,7 @@ const Header = ({ large }) => {
             fontFamily: 'Montserrat',
             fontStyle: 'normal',
             fontWeight: '500',
-            fontSize: '16px',
+            fontSize: large ? '16px' : '14px',
             lineHeight: '20px',
             color: '#D05270',
             cursor: 'pointer'
@@ -68,7 +52,7 @@ const Header = ({ large }) => {
             fontFamily: 'Montserrat',
             fontStyle: 'normal',
             fontWeight: '500',
-            fontSize: '16px',
+            fontSize: large ? '16px' : '14px',
             lineHeight: '20px',
             cursor: 'pointer'
         },
@@ -77,7 +61,7 @@ const Header = ({ large }) => {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'flex-start',
-            padding: '5px 10px',
+            padding: '2px 10px',
             gap: '5px',
             fontFamily: 'Mulish',
             fontStyle: 'normal',
@@ -92,39 +76,55 @@ const Header = ({ large }) => {
     return (
         <div style={style.div}>
             {
-                large === 'large' ? (
+                large ? (
                     <>
                         <p style={style.p}>Comment</p>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '65%', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '50%', flexWrap: 'wrap' }}>
+                            <p style={style.comment}>All||</p>
+                            <p style={style.comment1}>Administrators||</p>
+                            <p style={style.comment}>Authors||</p>
+                            <p style={style.comment1}>Subscriber||</p>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '45%' }}>
                             <select>
                                 <option selected disabled hidden>Bulk action</option>
-                                <option>Approved</option>
-                                <option>Unapproved</option>
-                                <option>Trash</option>
+                                <option>Suspend</option>
+                                <option>Delete</option>
                             </select>
                             <p style={style.apply}>Apply</p>
-                            <p style={style.comment}>All|{comments.length}|</p>
-                            <p style={style.comment1}>Approved|{comments.filter((comment) => comment.authorize === true)?.length}|</p>
-                            <p style={style.comment}>Unapproved|{comments.filter((comment) => comment.authorize === false)?.length}|</p>
-                            <p style={style.comment}>Trash|2|</p>
+                            <select>
+                                <option selected disabled hidden>Change Role</option>
+                                <option>Administrator</option>
+                                <option>Author</option>
+                                <option>Subscriber</option>
+                            </select>
+                            <p style={style.apply}>Change</p>
                         </div>
                     </>
                 ) : (
                     <>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '55%' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', }}>
+                            <p style={style.comment}>All||</p>
+                            <p style={style.comment1}>Administrators||</p>
+                            <p style={style.comment}>Authors||</p>
+                            <p style={style.comment1}>Subscriber||</p>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '53%' }}>
                             <select>
                                 <option selected disabled hidden>Bulk action</option>
-                                <option>Approved</option>
-                                <option>Unapproved</option>
-                                <option>Trash</option>
+                                <option>Suspend</option>
+                                <option>Delete</option>
                             </select>
                             <p style={style.apply}>Apply</p>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', }}>
-                            <p style={style.comment}>All|{comments.length}|</p>
-                            <p style={style.comment1}>Approved|{comments.filter((comment) => comment.authorize === true)?.length}|</p>
-                            <p style={style.comment}>Unapproved|{comments.filter((comment) => comment.authorize === false)?.length}|</p>
-                            <p style={style.comment}>Trash|2|</p>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '63%' }}>
+                            <select>
+                                <option selected disabled hidden>Change Role</option>
+                                <option>Administrator</option>
+                                <option>Author</option>
+                                <option>Subscriber</option>
+                            </select>
+                            <p style={style.apply}>Change</p>
                         </div>
                     </>
                 )

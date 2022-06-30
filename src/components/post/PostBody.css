@@ -171,12 +171,22 @@
     color: #F91717;
 }
 
+.mainContent div iframe {
+    width: 100%;
+    height: 900px;
+}
+
 .mainContent1 div img {
     width: 100%;
 }
 
 .mainContent1 div video {
     width: 100%;
+}
+
+.mainContent1 div iframe {
+    width: 100%;
+    height: 400px;
 }
 
 .mainContent1 div a {

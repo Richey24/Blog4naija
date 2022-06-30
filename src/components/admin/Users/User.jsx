@@ -3,25 +3,31 @@ import SideBar from "../Laptop/SideBar"
 import Header from "./Header"
 import { useEffect, useState } from "react"
 import MyNavBar from "../Phone/NavBar"
-import Search from "../Pages/Search"
+import Search from "./Search"
+import Table from "./Table"
 import '../Main.css'
-import Main from "./Main"
+import axios from 'axios';
+import { url } from './../../../Env';
 
-const Media = () => {
+const User = () => {
     const [large, setLarge] = useState(false)
     const [size, setSize] = useState(window.innerWidth)
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [user, setUser] = useState([])
     useEffect(() => {
         if (size >= 800) {
             setLarge(true)
         } else {
             setLarge(false)
         }
+        getUser()
     }, [size])
 
+
+    const getUser = async () => {
+        let res = await axios.get(`${url}/api/user/get/all`)
+        let rep = await res.data
+        setUser(rep)
+    }
 
     window.addEventListener('resize', () => { setSize(window.innerWidth) })
 
@@ -43,21 +49,22 @@ const Media = () => {
     return (
         large ?
             <div className="dashMain">
-                <SideBar active={`media`} />
-                <div style={{ marginLeft: '1rem' }}>
+                <SideBar active={`user`} />
+                <div style={{ marginRight: '7rem' }}>
                     <NavBar />
-                    <Header handleShow={handleShow} />
-                    <Main large={large} handleClose={handleClose} show={show} />
+                    <Header large={large} />
+                    <Table large={large} users={user} />
                 </div>
             </div> :
             <div style={{ marginRight: "1rem", marginLeft: '1rem' }} >
-                <MyNavBar active={`media`} hide={hide} name={`Media`} />
+                <MyNavBar active={`user`} hide={hide} name={`Users`} />
                 <div id='main'>
-                    <Search handleShow={handleShow} />
-                    <Main large={large} handleClose={handleClose} show={show} />
+                    <Search />
+                    <Header large={large} />
+                    <Table large={large} users={user} />
                 </div>
             </div>
     )
 }
 
-export default Media
+export default User

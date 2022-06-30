@@ -396,10 +396,10 @@ const Edit = ({ large }) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button style={{ backgroundColor: '#D9758D', border: 'none', outline: 'none' }} onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button style={{ backgroundColor: '#D9758D', border: 'none', outline: 'none' }} onClick={handleClose}>
                         <label htmlFor="addMedia" > Upload New Media</label>
                     </Button>
                 </Modal.Footer>
