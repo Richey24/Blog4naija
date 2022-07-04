@@ -1,25 +1,25 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Blog$Naija",
+  "name": "Blog4Naija is a modern day blog that brings your the latest news and event happening around you and on social media",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "Saly-16.svg",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/svg"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
+      "src": "Saly-16.svg",
+      "type": "image/svg",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
+      "src": "Saly-16.svg",
+      "type": "image/svg",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#D05270",
+  "background_color": "#D05270"
 }
