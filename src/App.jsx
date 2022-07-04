@@ -45,7 +45,17 @@ const App = () => {
         <div style={large ? { marginLeft: '6rem', marginRight: '6rem' } : { marginLeft: '1rem', marginRight: '1rem' }}>
             {
                 spin ? (
-                    <Spinner animation="grow" style={{ color: "#D05270" }} />
+                    <div
+                        style={{
+                            width: "100%",
+                            height: "100vh",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <Spinner animation="grow" style={{ color: "#D05270" }} />
+                    </div>
                 ) : (
                     <>
                         <Header hide={hide} />

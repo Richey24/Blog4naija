@@ -30,7 +30,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <Post />
@@ -42,7 +52,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <Main />
@@ -54,7 +74,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <Dashboard />
@@ -66,7 +96,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <AdminPost />
@@ -78,7 +118,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <Pages />
@@ -90,7 +140,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <Comment />
@@ -102,7 +162,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <Preview />
@@ -114,7 +184,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <Media />
@@ -126,7 +206,17 @@ root.render(
           element={
             <React.Suspense
               fallback={
-                <Spinner animation="border" style={{ color: "#D05270" }} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#D05270" }} />
+                </div>
               }
             >
               <User />

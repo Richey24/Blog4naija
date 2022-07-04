@@ -10,7 +10,7 @@ const Table = ({ large, users }) => {
     return (
         <div>
             {!large && (
-                <Alert show={show} variant="success">
+                <Alert show={show} style={{ backgroundColor: '#D05270' }}>
                     <Alert.Heading>Limited Information</Alert.Heading>
                     <p>
                         Kindly switch to a desktop to view all information in this page
