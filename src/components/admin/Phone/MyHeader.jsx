@@ -11,12 +11,20 @@ const MyHeader = () => {
     const navigate = useNavigate()
     const [increment, setIncrement] = useState(0)
     const [total, setTotal] = useState(0)
+    const [cLength, setCLength] = useState([])
+
     useEffect(() => {
         (async () => {
+            let myArr = []
             let response = await axios.get(`${url}/api/blog/get/all`)
-            let result = await response.data
             let response1 = await axios.get(`${url}/api/stat`)
+            let res = await axios.get(`${url}/api/blog/comments/getall`)
+            let result = await response.data
             let result2 = await response1.data
+            let rep = res.data
+            rep.map((one) => myArr.push(...one.reply))
+            myArr.push(...rep)
+            setCLength(myArr)
             let arr = result
             let total = arr.reduce((a, b) => parseInt(a) + parseInt(b.view), 0)
             setIncrement(result2[result2.length - 1].views);
@@ -45,7 +53,7 @@ const MyHeader = () => {
                     <p>Total Views <span><img src={up} alt="up" />+{increment}</span></p>
                 </div>
                 <div className='myViews'>
-                    <h5>2,223,215</h5>
+                    <h5>{cLength?.length}</h5>
                     <p>Total Comments <span><img src={up} alt="up" />+4</span></p>
                 </div>
             </div>
