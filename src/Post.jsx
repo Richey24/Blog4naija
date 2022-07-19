@@ -3,7 +3,7 @@ import Footer from './components/Footer'
 import { useState, useEffect } from 'react'
 import { Spinner } from 'react-bootstrap'
 import PostBody from './components/post/PostBody'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { url } from './Env'
 
@@ -13,34 +13,32 @@ const Post = () => {
     const [post, setPost] = useState({})
     const [related, setRelated] = useState([])
     const [size, setSize] = useState(window.innerWidth)
-    let location = useLocation()
+    let { id } = useParams()
     let navigate = useNavigate()
 
-    const getPost = async (id = location.state.postId) => {
-        if (location.state === null) {
+    const getPost = async () => {
+        if (id === undefined) {
             navigate('/')
         } else {
-            if (location.state.postId === undefined) {
-                navigate('/')
-            } else {
-                let response = await axios.get(`${url}/api/blog/get/${id}`)
-                let result = await response.data
-                setPost(result)
-                if (!result.category) return
-                let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=5`)
-                let filterResult = await filterResponse.data
-                let arr = []
-                for (let i = 0; i < filterResult.content.length; i++) {
-                    if (arr.length === 3) break
-                    if (filterResult.content[i].id === result.id) continue
-                    arr.push(filterResult.content[i])
-                }
-                setRelated(arr)
+            let response = await axios.get(`${url}/api/blog/get/${id}`)
+            let result = await response.data
+            setPost(result)
+            if (!result.category) return
+            let filterResponse = await axios.get(`${url}/api/blog/get/page?offSet=${0}&category=${result.category}&pageSize=5`)
+            let filterResult = await filterResponse.data
+            let arr = []
+            for (let i = 0; i < filterResult.content.length; i++) {
+                if (arr.length === 3) break
+                if (filterResult.content[i].id === result.id) continue
+                arr.push(filterResult.content[i])
             }
+            setRelated(arr)
         }
     }
 
-    window.scrollTo(0, 0)
+    getPost()
+
+
 
     useEffect(() => {
         if (window.innerWidth >= 800) {
@@ -49,8 +47,8 @@ const Post = () => {
             setLarge(false)
         }
         setSpin(true)
-        getPost()
         setSpin(false)
+        window.scrollTo(0, 0)
     }, [size])
 
     window.addEventListener('resize', () => { setSize(window.innerWidth) })

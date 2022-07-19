@@ -26,7 +26,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route
-          path="/more"
+          path="/post/:id"
           element={
             <React.Suspense
               fallback={

@@ -50,7 +50,7 @@ const Main = ({ name, filter, post }) => {
     }
 
     const getPostById = (id) => {
-        navigate('/more', { state: { postId: id } })
+        navigate(`/post/${id}`)
     }
 
     useEffect(() => {
